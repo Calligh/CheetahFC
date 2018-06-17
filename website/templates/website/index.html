@@ -28,10 +28,31 @@
          	    <v-flex xs12 sm12 md4 lg4 xl4>
          	      <v-layout row wrap>
          	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Subscribe Magazines
-         	        	  </v-card-title>
+         	        	<v-card tile color="grey lighten-5">
+                      <v-flex xs12 md12 lg12>
+                         <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;padding:0 5px 0 5px;">
+                            <v-icon>notifications_active</v-icon>
+                         Subscribe To Our Magazine</v-chip>
+                      </v-flex>
+         	        	  <v-flex xs12 sm12 md12 lg12>
+                        <v-form ref="form" v-model="valid" lazy-validation>
+                          <v-text-field
+                            v-model="email"
+                            label="Email"
+                            :rules="emailRules"
+                            required
+                          ></v-text-field>
+                          <v-btn
+                            :disabled="!valid"
+                            @click="submit"
+                            >
+                          Submit
+                        </v-btn>
+                        <v-btn
+                        @click="clear"
+                        >Reset</v-btn>
+                        </v-form>
+                      </v-flex>
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
@@ -42,11 +63,56 @@
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Info Board
-         	        	    Team A Vs Team B
-         	        	  </v-card-title>
+         	        	<v-card style="padding:2px 0px 6px 0px;">
+                      <v-flex xs12 md12 lg12>
+                         <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;padding:0 5px 0 5px;">
+                            <v-icon>event</v-icon>
+                         Info Board</v-chip>
+                      </v-flex>
+         	        	  {% for data in info_board %}
+                       {% if data.status|lower == 'active' %}
+                        <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1>
+                          
+                          <v-avatar size="82" color="red accent-3">
+                            <span class="white--text headline"></span>
+                          </v-avatar>
+                           <v-avatar color="yellow darken-2" size="45">
+                            <span class="white--text">VRS</span>
+                          </v-avatar>
+                           <v-avatar color="red accent-3" size="82">
+                            <span class="white--text headline"></span>
+                          </v-avatar>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                           <v-icon>supervisor_account</v-icon>  <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.teams }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <v-icon>event</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.date }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <v-icon>loyalty</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.time }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1 style="padding-bottom: 10px;">
+                          <v-card flat tile>
+                            <v-icon>location_on</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.venue }}</span>
+                          </v-card>
+                        </v-flex>
+                      {% else %}
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <span style="margin-left:15px;font-weight: 400;font-size: 16px;">No Information Available</span>
+                          </v-card>
+                        </v-flex>
+                      {% endif %}
+                      
+                      {% empty %}
+                      {% endfor %}
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
@@ -57,11 +123,36 @@
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Player Of The Week
-         	        	  </v-card-title>
-         	        	</v-card>
+                    <v-card flat tile>
+                      <v-flex xs12 md12 lg12>
+                         <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                            <v-icon>star</v-icon>
+                         Player Of The Week</v-chip>
+                      </v-flex>
+                      {% for item in weekly_player %}
+                      <v-flex xs12 sm12 md12 lg12 xl12>
+                          <v-card hover>
+                             <v-card-media
+                               class="white--text"
+                               height="300px"
+                               src="{{ item.player_pic.url }}"
+                             >
+                             </v-card-media>
+                             <v-card-title primary-title>
+                               <div>
+                                  <div class="headline" style="font-size: 16px;font-weight: bold;">{{ item.heading | truncatechars:25}}</div>
+                                  <div class="grey--text">{{ item.short_description | truncatechars:30 }}</div>
+                               </div>
+                             </v-card-title>
+                             <v-card-actions>
+                                <v-spacer></v-spacer>
+                               <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
+                             </v-card-actions>
+                          </v-card>
+                       </v-flex>
+                      {% empty %}
+                      {% endfor %}
+                    </v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
          	        	<v-card tile>
@@ -79,6 +170,11 @@
          	     <v-layout row wrap>
          	        <v-flex xs12 sm12>
          	        	 <v-layout row wrap>
+                           <v-flex xs12 sm12 md12>
+                              <v-chip color="red accent-3" text-color="white" selected style="font-size: 16px;">
+                                <v-avatar right class="red darken-3" style="font-weight: bold;">{{ news_total }}</v-avatar>
+                              News Of Cheetah FC</v-chip>
+                           </v-flex>
                         {% for data in news %}
                            <v-flex xs12 sm12 md4 lg4 xl4>
                               <v-card hover>
@@ -104,12 +200,23 @@
                       </v-layout>
          	        </v-flex>
                     <v-flex xs12 sm12>
-                     <v-card tile>
-                       <v-card-title primary-title>
-                        
-                         News Of The Cheetah FC
-                       </v-card-title>
-                     </v-card>
+                      <v-layout row wrap>
+                        <v-flex xs12 md12 lg12>
+                         <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                            <v-icon>bar_chart</v-icon>
+                         Clothing Lines</v-chip>
+                        </v-flex>
+                         <v-flex xs12 sm12 md12>
+                           <v-card tile>
+                         
+                              {% for cloth in clothing_lines %}
+                              <img src="{{ cloth.cloth_picture.url }}" width="100%" height="100%">
+                              {% empty %}
+                              {% endfor %}
+                            
+                           </v-card>
+                         </v-flex>
+                      </v-layout>
                     </v-flex>
          	        <v-flex xs12 sm12>
          	        	<v-card tile>
@@ -119,11 +226,18 @@
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Wall Papers
-         	        	  </v-card-title>
-         	        	</v-card>
+                    
+                      <v-flex xs12 sm12 md12>
+                       <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                              <v-icon>image</v-icon>
+                           Wallpapers</v-chip>
+                      </v-flex>
+                      <v-card>
+                      <v-container fluid grid-list-xs>
+                         <wallpaper-grid :wallpapers="{{ wallpapers }}"></wallpaper-grid>
+                         <v-btn flat text-sm-center href="{% url 'home' %}">View More</v-btn>
+                      </v-container>
+                    </v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
          	        	<v-card tile>
@@ -138,13 +252,83 @@
          	</v-flex>
          	<v-flex xs12 sm12 md3 lg3 xl3>
          	  <v-layout row wrap>
-         	    <v-flex xs12 md12 sm12>
-         	      <v-card>
-         	        <v-card-title primary-title>
-         	          Sample Text
-         	        </v-card-title>
-         	      </v-card>
-         	    </v-flex>
+              <v-flex xs12 md12 sm12>
+                <v-card flat tile>
+                  {% for jersey in jerseys %}
+                  <v-flex xs12 md12 lg12>
+                    <v-card>
+                      <v-card-media
+                        class="white--text"
+                        height="300px"
+                        src="{{ jersey.jersey_image.url}}"
+                      >
+                      </v-card-media>
+                      {% if jersey.jersey_caption is None %}
+                        
+                      {% else %}
+                       <v-card-title primary-title>
+                         <div>
+                            <div class="headline" style="font-size: 16px;font-weight: bold;">{{ jersey.jersey_caption | truncatechars:25}}</div>
+                         </div>
+                       </v-card-title>
+                      {% endif %}
+                    </v-card>
+                  </v-flex>
+                  {% empty %}
+                  <v-card>
+                    <v-card-media
+                      height="300px"
+
+                      src="{% static 'images/whistle.svg' %}"
+                    >
+                      
+                    </v-card-media>
+                    <v-card-title primary-title>
+                      <span style="text-align: center;font-weight: 500;font-size: 18px;position: relative;left: 20%;">No Jerseys Available</span>
+                    </v-card-title>
+                  </v-card>
+                  {% endfor %}
+                </v-card>
+              </v-flex>
+              <v-flex xs12 md12 sm12>
+                <v-card>
+                  <v-card-title primary-title>
+                    Talent Bridge Ads
+                  </v-card-title>
+                </v-card>
+              </v-flex>
+              <v-flex xs12 md12 sm12>
+               <v-card flat tile>
+                    <v-flex xs12 md12 lg12>
+                       <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                          <v-icon>camera</v-icon>
+                       Picture Of The Week</v-chip>
+                    </v-flex>
+                    {% for picture in weekly_picture %}
+                    <v-flex xs12 sm12 md12 lg12 xl12>
+                        <v-card hover>
+                           <v-card-media
+                             class="white--text"
+                             height="300px"
+                             src="{{ picture.picture.url }}"
+                           >
+                           </v-card-media>
+                           <v-card-title primary-title>
+                             <div>
+                                <div class="headline" style="font-size: 16px;font-weight: bold;">{{ picture.heading | truncatechars:25}}</div>
+                                <div class="grey--text">{{ picture.short_description | truncatechars:30 }}</div>
+                             </div>
+                           </v-card-title>
+                           <v-card-actions>
+                              <v-spacer></v-spacer>
+                             <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
+                           </v-card-actions>
+                        </v-card>
+                     </v-flex>
+                    {% empty %}
+                    {% endfor %}
+                  </v-card>
+              </v-flex>
          	  </v-layout>
          	</v-flex>
          </v-layout>
@@ -170,20 +354,48 @@
 			 </v-carousel>`
 	}
 
-   var cheetaNewsCard = {
-      props:['news-data'],
-      template:``
+   var wallpaper_grid = {
+      props:['wallpapers'],
+      template:`<v-layout row wrap>
+                    <v-flex v-for="(image,i) in wallpapers" :key="i" xs4>
+                      <img :src="image.src" class="image" alt="lorem" width="100%" height="100%">
+                    </v-flex>
+                </v-layout>`
    }
 
 	new Vue({
 		el:"#app",
 		components:{
 			'carousel-tagger':carousel_tagger,
-         'news-card':cheetaNewsCard
+         'wallpaper-grid':wallpaper_grid
 		},
-		data:{	
+		data:{
+      valid:true,
+      email:'',
+      emailRules:[
+        v => !!v || 'E-mail is required',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+      ]
 			
-		}
+		},
+    methods:{
+      submit(){
+        if(this.$refs.form.validate()){
+          //The form submission will be done here
+        }
+      },
+      clear(){
+        this.$refs.form.reset()
+      }
+    }
 	})
 </script>
+<style scoped>
+  img.image{
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  
+</style>
+
 {% endblock javascript %}

@@ -1,0 +1,8 @@
+@charset "UTF-8"
+*{
+	margin: 0 auto;
+}
+
+#top_sliders,#top_blinkers{
+	margin-top: -9px;
+}
