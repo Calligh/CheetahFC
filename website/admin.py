@@ -1,7 +1,7 @@
 from django.contrib import admin
 from website.models import (
 	PlayerSlider,CheetahNew,NewsPosters,PlayerOfWeek,InfoBoard,ClothLining,StarReunion,Wallpaper,
-	Video,TalentBridgeAdvert,JerseyAdvert,PictureOfWeek,SportsNew
+	Video,TalentBridgeAdvert,JerseyAdvert,PictureOfWeek,SportsNew,CEOMessage
 	)
 # Register your models here.
 class AdminPlayersImages(admin.ModelAdmin):
@@ -55,6 +55,10 @@ class AdminSportNew(admin.ModelAdmin):
 	list_display = ('preview_image','headlines','pub_date','created_at')
 	search_fields = ('headlines','pub_date','created_at')
 
+class AdminCEOMsg(admin.ModelAdmin):
+	list_display = ('ceo_image','ceo_message_title','ceo_message')
+	search_fields = ('ceo_message','ceo_message_title')
+
 admin.site.register(PlayerSlider,AdminPlayersImages)
 admin.site.register(CheetahNew,AdminCheetahNews)
 admin.site.register(NewsPosters,AdminNewsPoster)
@@ -68,3 +72,4 @@ admin.site.register(TalentBridgeAdvert,AdminTalentBridgeAdvert)
 admin.site.register(PictureOfWeek,AdminPictureOfWeek)
 admin.site.register(SportsNew,AdminSportNew)
 admin.site.register(JerseyAdvert,AdminJerseyAdvert)
+admin.site.register(CEOMessage,AdminCEOMsg)

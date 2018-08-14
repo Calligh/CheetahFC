@@ -54,6 +54,7 @@ class InfoBoard(models.Model):
 class ClothLining(models.Model):
 	cloth_name = models.CharField(max_length=30, default='',blank=True, help_text="Clothing Names (Optional)")
 	cloth_picture = models.FileField(upload_to='cloth_lining/')
+	cloth_writeup = models.TextField(default = '')
 	pub_date = models.DateField()
 	created_at = models.DateTimeField(auto_now=True)
 
@@ -97,3 +98,12 @@ class SportsNew(models.Model):
 	created_at = models.DateTimeField(auto_now=True)
 
 	sports_news = models.Manager()
+
+# Message from the CEO
+class CEOMessage(models.Model):
+	ceo_image = models.FileField(upload_to='ceo_pics/', help_text="CEO's Message (Optional)", blank=True)
+	ceo_message_title = models.CharField(max_length=500 ,default='', help_text=" Enter Title Here", blank=True)
+	ceo_message = models.TextField(max_length=65535, default= '')
+	created_at = models.DateTimeField(auto_now=True)
+
+	messages = models.Manager()

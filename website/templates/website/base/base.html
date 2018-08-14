@@ -6,11 +6,13 @@
 		<link rel="stylesheet" href="{% static 'css/vuetify.min.css' %}">
 		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
 		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+		<link rel="stylesheet" href="{% static 'lightGallery/src/css/lightgallery.css' %}" />
+		<link rel="stylesheet" href="{% static 'lightGallery/dist/css/lg-transitions.min.css' %}" />
 		 <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
 		  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 	</head>
 	<body>
-	  <div id="app">
+	  <v-app id="app">
 	  	<header>
 	  	{% block navbar %}
 	  		<template>
@@ -26,7 +28,26 @@
 			      	Home
 			      </v-btn>
 			      <v-btn flat href="{% url 'ceo-message' %}" class="white--text">CEO Message</v-btn>
-			      <v-btn flat class="white--text">Teams</v-btn>
+			      <v-menu offset-y slide-y-transition>
+			        <v-btn  color="red accent-3" class="white--text" slot="activator">Teams</v-btn>
+			        <v-list>
+			          <v-list-tile exact href="{% url 'technical-team' %}" tag="a">
+			            <v-list-tile-title> Technical Team</v-list-tile-title>
+			          </v-list-tile>
+			          <v-list-tile exact href="{% url 'first-team' %}" tag="a">
+			            <v-list-tile-title> First Team</v-list-tile-title>
+			          </v-list-tile>
+			          <v-list-tile exact href="{% url 'under-17' %}" tag="a">
+			            <v-list-tile-title> Under 17</v-list-tile-title>
+			          </v-list-tile>
+			          <v-list-tile exact href="{% url 'under-15' %}" tag="a">
+			            <v-list-tile-title> Under 15</v-list-tile-title>
+			          </v-list-tile>
+			          <v-list-tile exact href="{% url 'under-13' %}" tag="a">
+			            <v-list-tile-title> Under 13</v-list-tile-title>
+			          </v-list-tile>
+			        </v-list>
+			      </v-menu>
 			      <v-btn flat class="white--text">Fixtures &amp; Results</v-btn>
 			      <v-btn flat class="white--text">Players Abroad</v-btn>
 			      <v-btn flat class="white--text">Gallery</v-btn>
@@ -43,13 +64,22 @@
 	  	{% block footer %}
 	  	{% endblock footer %}
 	  </footer>
-	  </div>
+	  </v-app>
 	    <!-- Scripts for the configs -->
-	  	<script src="{% static 'js/vue.js' %}"></script>
-	    <script src="{% static 'js/vuetify.js' %}"></script>
 	    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
 	    <script src="{% static 'js/hammer.js' %}"></script>
-
+	    <script src="{% static 'lightGallery/src/js/lightgallery.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-fullscreen.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-thumbnail.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-autoplay.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-video.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-zoom.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-hash.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-pager.js' %}"></script>
+	    <script src="{% static 'lightGallery/demo/js/lg-share.js' %}"></script>
+	    <script src="{% static 'lightGallery/lib/jquery.mousewheel.min.js' %}"></script>
+	    <script src="{% static 'js/vue.js' %}"></script>
+	    <script src="{% static 'js/vuetify.js' %}"></script>
 	    {% block javascript %}
 	   
 	    {% endblock javascript %}
