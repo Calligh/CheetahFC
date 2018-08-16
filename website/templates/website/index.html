@@ -231,9 +231,13 @@
                         <v-card tile>
                           <v-container fluid grid-list-sm>
                             <v-layout row wrap>
-                              <!-- Star reunion here -->
-                              <star-reunion :star_list = "{{star_data}}"></star-reunion>
-                              <v-btn flat @click.stop="dialog = true">View More</v-btn>
+                              <v-flex xs12 sm12>
+                                <!-- Star reunion here -->
+                                <star-reunion :star_list = "{{star_data}}"></star-reunion>
+                              </v-flex>
+                             <v-flex xs12>
+                                <v-btn flat @click.stop="dialog = true">View More</v-btn>
+                             </v-flex>
                             </v-layout>
                           </v-container>
                         </v-card>
@@ -409,12 +413,19 @@
    var star_reunion = {
       props:['star_list'],
       template: `
-               <v-flex>
-                  <img :src=" " class="image" :alt="" width="100%" height="100%">
-              </v-flex>
+               <v-flex id="starsGallery">
+                  <v-card
+                  v-for="(image_data,index) in star_list "
+                  v-bind:key = "image_data.src"
+                  v-bind:href = "image_data.src"
+                  tag = "a"
+                  flat
+                  >
+                      <img v-bind:src="image_data.src" :alt="image_data.src" width="200px" height="220px" />
+                  </v-card>
+               </v-flex>
       `
    }
-
 	new Vue({
 		el:"#app",
 		components:{
