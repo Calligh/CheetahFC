@@ -61,24 +61,37 @@
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card style="padding:2px 0px 6px 0px;">
-                      <v-flex xs12 md12 lg12>
+                        <v-flex xs12 md12 lg12>
                          <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;padding:0 5px 0 5px;">
                             <v-icon>event</v-icon>
                          Info Board</v-chip>
                       </v-flex>
+         	        	<v-card style="padding:2px 0px 6px 0px;">
+
          	        	  {% for data in info_board %}
                        {% if data.status|lower == 'active' %}
                         <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1>
                           
                           <v-avatar size="82" color="red accent-3">
-                            <span class="white--text headline"></span>
+                            <span class="white--text headline">
+                                {% if data.score_board_team1 is not None %}
+                                  {{ data.score_board_team1 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
                           </v-avatar>
                            <v-avatar color="yellow darken-2" size="45">
                             <span class="white--text">VRS</span>
                           </v-avatar>
                            <v-avatar color="red accent-3" size="82">
-                            <span class="white--text headline"></span>
+                            <span class="white--text headline">
+                                {% if data.score_board_team2 is not None %}
+                                  {{ data.score_board_team2 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
                           </v-avatar>
                         </v-flex>
                         <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
@@ -101,6 +114,7 @@
                             <v-icon>location_on</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.venue }}</span>
                           </v-card>
                         </v-flex>
+
                       {% else %}
                         <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
                           <v-card flat tile>
@@ -111,6 +125,10 @@
                       
                       {% empty %}
                       {% endfor %}
+                            <v-flex xs12 md12>
+                                <v-spacer></v-spacer>
+                                <v-btn exact tag="a" href="{% url 'fixtures' %}" style="text-transform:capitalize;">View More Fixtures</v-btn>
+                            </v-flex>
          	        	</v-card>
          	        </v-flex>
          	       
@@ -191,14 +209,15 @@
                                  </v-card-title>
                                  <v-card-actions>
                                     <v-spacer></v-spacer>
-                                   <v-tooltip bottom>
-                                     <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
-                                     Read Full Article
-                                   </v-tooltip>
+                                     <v-btn flat href="{% url 'news_details' news_id=data.id  %}" exact>Read More</v-btn>
                                  </v-card-actions>
                               </v-card>
                            </v-flex>
                         {% endfor %}
+                             <v-flex xs12 md12 lg12 sm12>
+                                 <v-spacer></v-spacer>
+                                 <v-btn flat bottom block href="{% url 'news' %}" :style="newsAllBtn">View All News</v-btn>
+                             </v-flex>
                       </v-layout>
          	        </v-flex>
                     <v-flex xs12 sm12>
@@ -208,7 +227,7 @@
                             <v-icon>bar_chart</v-icon>
                          Clothing Lines</v-chip>
                         </v-flex>
-                         <v-flex xs12 sm12 md12>
+                         <v-flex xs12 sm12 md12 lg12>
                            <v-card tile>
                          
                               {% for cloth in clothing_lines %}
@@ -231,7 +250,7 @@
                         <v-card tile>
                           <v-container fluid grid-list-sm>
                             <v-layout row wrap>
-                              <v-flex xs12 sm12>
+                              <v-flex xs12 sm12 md12 lg12>
                                 <!-- Star reunion here -->
                                 <star-reunion :star_list = "{{star_data}}"></star-reunion>
                               </v-flex>
@@ -372,11 +391,13 @@
               <v-btn dark flat @click.native="dialog = false">Save</v-btn>
             </v-toolbar-items> -->
           </v-toolbar>
-          <v-card-text>
-
-          </v-card-text>
-
-          <div style="flex: 1 1 auto;"></div>
+          <v-container fluid grid-list-md>
+              <v-layout row wrap>
+                  <v-flex xs12>
+                      <star-readmore v-bind:star_readmore="{{ star_readmore }}"></star-readmore>
+                  </v-flex>
+              </v-layout>
+          </v-container>
         </v-card>
       </v-dialog>
 </template>
@@ -426,12 +447,28 @@
                </v-flex>
       `
    }
+
+   var star_reunion_moreList = {
+      props:['star_readmore'],
+      template: ` <v-flex id="starMoreGallery">
+                  <v-card
+                  v-for="(image_data,index) in star_readmore "
+                  v-bind:key = "image_data.src"
+                  v-bind:href = "image_data.src"
+                  tag = "a"
+                  flat
+                  >
+                      <img v-bind:src="image_data.src" :alt="image_data.src" width="200px" height="220px" />
+                  </v-card>
+               </v-flex>`
+   }
 	new Vue({
 		el:"#app",
 		components:{
 			'carousel-tagger':carousel_tagger,
-      'wallpaper-grid':wallpaper_grid,
-      'star-reunion': star_reunion
+              'wallpaper-grid':wallpaper_grid,
+              'star-reunion': star_reunion,
+              'star-readmore': star_reunion_moreList
 		},
 		data:{
       //Dialogs
@@ -439,6 +476,11 @@
       //Cheetah Ad size
       w: 306,
       mgL: 9,
+      newsAllBtn:{
+        marginTop: '25px',
+        textTransform: 'capitalize',
+        fontSize: '18px'
+      },
       valid:true,
       email:'',
       emailRules:[
@@ -469,6 +511,7 @@
           
         // }); 
         $("#starsGallery").lightGallery();
+        $("#starMoreGallery").lightGallery();
       })
       
     }
@@ -479,6 +522,18 @@
     cursor: pointer;
     pointer-events: auto;
   }
+  #starMoreGallery,#starsGallery {
+    width:100%;
+    height:auto;
+    }
+  #starMoreGallery > a ,#starsGallery > a{
+   margin:5px;
+   display:inline-block;
+   }
+
+   #starMoreGallery > a > img, #starsGallery > a > img{
+    border-radius:8px;
+    }
   
 </style>
 

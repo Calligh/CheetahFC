@@ -25,4 +25,7 @@ urlpatterns = [
     path('under-17',views.u17, name='under-17'),
     path('under-15',views.u15, name='under-15'),
     path('under-13',views.u13, name='under-13'),
+    path('news', views.news, name='news'),
+    path('news-details/<int:news_id>/', views.news_details, name='news_details'),
+    path('fixtures',views.fixtures, name='fixtures'),
 ]

@@ -1,0 +1,88 @@
+{% extends 'website/base/base.html' %}
+
+{% block title %} Cheetah FC | Technical Team {% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<template>
+	<v-container fluid grid-list-md a>
+	  <v-layout row wrap>
+	    <v-flex d-flex xs12 md12 lg12 sm12>
+			<v-layout row wrap>
+				{% for data in all_fixtures %}
+				<v-flex xs12 md2 lg2 sm2>
+					<v-card>
+						 {% if data.status|lower == 'active' %}
+                        <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1 style="padding-top:15px;padding-bottom:10px;">
+                          <v-avatar size="82" color="red accent-3">
+                            <span class="white--text headline">
+                                {% if data.score_board_team1 is not None %}
+                                  {{ data.score_board_team1 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
+                          </v-avatar>
+                           <v-avatar color="yellow darken-2" size="45">
+                            <span class="white--text">VRS</span>
+                          </v-avatar>
+                           <v-avatar color="red accent-3" size="82">
+                            <span class="white--text headline">
+                                {% if data.score_board_team2 is not None %}
+                                  {{ data.score_board_team2 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
+                          </v-avatar>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                           <v-icon>supervisor_account</v-icon>  <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.teams }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <v-icon>event</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.date }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <v-icon>loyalty</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.time }}</span>
+                          </v-card>
+                        </v-flex>
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1 style="padding-bottom: 10px;">
+                          <v-card flat tile>
+                            <v-icon>location_on</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.venue }}</span>
+                          </v-card>
+                        </v-flex>
+                      {% else %}
+                        <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
+                          <v-card flat tile>
+                            <span style="margin-left:15px;font-weight: 400;font-size: 16px;">No Information Available</span>
+                          </v-card>
+                        </v-flex>
+                      {% endif %}
+					</v-card>
+				</v-flex>
+				{% empty %}
+				{% endfor %}
+			</v-layout>
+	    </v-flex>
+	  </v-layout>
+	</v-container>
+</template>
+
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+		
+		}
+	})
+</script>
+{% endblock javascript %}
