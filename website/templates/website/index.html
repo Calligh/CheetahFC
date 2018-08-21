@@ -16,7 +16,7 @@
       </v-flex>
       <v-flex d-flex id="top_blinkers" xs12 sm12 md3 lg3 xl3>
       	<v-card tile flat>
-      		{{ sliders }}
+      	  <img src="http://i255.photobucket.com/albums/hh145/xmrsdanifilth/Animals/Leopards%20and%20Jaguars/Leopard.gif" alt="Leopart Gif" width="400px" height="500px"/>
       	</v-card>
       </v-flex>
     </v-layout>
@@ -72,7 +72,7 @@
          	        	  {% for data in info_board %}
                        {% if data.status|lower == 'active' %}
                         <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1>
-                          
+
                           <v-avatar size="82" color="red accent-3">
                             <span class="white--text headline"></span>
                           </v-avatar>
@@ -110,7 +110,7 @@
                           </v-card>
                         </v-flex>
                       {% endif %}
-                      
+
                       {% empty %}
                       {% endfor %}
          	        	</v-card>
@@ -160,7 +160,7 @@
                           height="200px"
                           src="{% static 'images/IMG-20180505-WA0049.jpg' %}"
                         >
-                           
+
                         </v-card-media>
          	        	</v-card>
          	        </v-flex>
@@ -208,12 +208,12 @@
                         </v-flex>
                          <v-flex xs12 sm12 md12>
                            <v-card tile>
-                         
+
                               {% for cloth in clothing_lines %}
                               <img src="{{ cloth.cloth_picture.url }}" width="100%" height="100%">
                               {% empty %}
                               {% endfor %}
-                            
+
                            </v-card>
                          </v-flex>
                       </v-layout>
@@ -226,7 +226,7 @@
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-                    
+
                       <v-flex xs12 sm12 md12>
                        <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
                               <v-icon>image</v-icon>
@@ -264,7 +264,7 @@
                       >
                       </v-card-media>
                       {% if jersey.jersey_caption is None %}
-                        
+
                       {% else %}
                        <v-card-title primary-title>
                          <div>
@@ -281,7 +281,7 @@
 
                       src="{% static 'images/whistle.svg' %}"
                     >
-                      
+
                     </v-card-media>
                     <v-card-title primary-title>
                       <span style="text-align: center;font-weight: 500;font-size: 18px;position: relative;left: 20%;">No Jerseys Available</span>
@@ -341,14 +341,14 @@
 
 {% block javascript %}
 <script type="text/javascript">
-	//Defining the components for the index page 
+	//Defining the components for the index page
 	var carousel_tagger = {
 		props:['items'],
 		template:`
 			<v-carousel light>
-			    <v-carousel-item 
-			    v-for="(item,i) in items" 
-			    :src="item.src" 
+			    <v-carousel-item
+			    v-for="(item,i) in items"
+			    :src="item.src"
 			    :key="i">
 			    </v-carousel-item>
 			 </v-carousel>`
@@ -376,7 +376,7 @@
         v => !!v || 'E-mail is required',
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
       ]
-			
+
 		},
     methods:{
       submit(){
@@ -395,7 +395,7 @@
     cursor: pointer;
     pointer-events: auto;
   }
-  
+
 </style>
 
 {% endblock javascript %}

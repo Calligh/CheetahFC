@@ -11,38 +11,40 @@
 	</head>
 	<body>
 	  <div id="app">
-	  	<header>
-	  	{% block navbar %}
-	  		<template>
-	  		  <v-toolbar color="red accent-3" style="z-index: 1000;" id="banks" height="70px" >
-	  		    <img src="{% static 'images/cheetah/IMG-20180505-WA0001.jpg' %}">
-	  		  </v-toolbar>
-			  <v-toolbar height="70px"  style="z-index: 1000;"  color="red accent-3" >
-			    <!-- <v-toolbar-side-icon></v-toolbar-side-icon>
-			    <v-toolbar-title>Title</v-toolbar-title> -->
-			    <v-spacer></v-spacer>
-			    <v-toolbar-items class="hidden-sm-and-down">
-			      <v-btn flat href="{% url 'home' %}" class="white--text">
-			      	Home
-			      </v-btn>
-			      <v-btn flat href="{% url 'ceo-message' %}" class="white--text">CEO Message</v-btn>
-			      <v-btn flat class="white--text">Teams</v-btn>
-			      <v-btn flat class="white--text">Fixtures &amp; Results</v-btn>
-			      <v-btn flat class="white--text">Players Abroad</v-btn>
-			      <v-btn flat class="white--text">Gallery</v-btn>
-			    </v-toolbar-items>
-			  </v-toolbar>
-			</template>
-	  	{% endblock navbar %}
-	  </header>
-	  <main>
-	  	{% block content %}
-	  	{% endblock content %}
-	  </main>
-	  <footer>
-	  	{% block footer %}
-	  	{% endblock footer %}
-	  </footer>
+	   <v-app light>
+	       	<header>
+    	  	{% block navbar %}
+    	  		<template>
+    	  		  <v-toolbar color="red accent-3" style="z-index: 1000;" id="banks" height="70px" >
+    	  		    <img src="{% static 'images/cheetah/IMG-20180505-WA0001.jpg' %}">
+    	  		  </v-toolbar>
+    			  <v-toolbar height="70px"  style="z-index: 1000;"  color="red accent-3" >
+    			    <!-- <v-toolbar-side-icon></v-toolbar-side-icon>
+    			    <v-toolbar-title>Title</v-toolbar-title> -->
+    			    <v-spacer></v-spacer>
+    			    <v-toolbar-items class="hidden-sm-and-down">
+    			      <v-btn flat href="{% url 'home' %}" class="white--text">
+    			      	Home
+    			      </v-btn>
+    			      <v-btn flat href="{% url 'ceo-message' %}" class="white--text">CEO Message</v-btn>
+    			      <v-btn flat class="white--text">Teams</v-btn>
+    			      <v-btn flat class="white--text">Fixtures &amp; Results</v-btn>
+    			      <v-btn flat class="white--text">Players Abroad</v-btn>
+    			      <v-btn flat class="white--text">Gallery</v-btn>
+    			    </v-toolbar-items>
+    			  </v-toolbar>
+    			</template>
+    	  	{% endblock navbar %}
+    	  </header>
+    	  <main>
+    	  	{% block content %}
+    	  	{% endblock content %}
+    	  </main>
+    	  <footer>
+    	  	{% block footer %}
+    	  	{% endblock footer %}
+    	  </footer>
+	   </v-app>
 	  </div>
 	    <!-- Scripts for the configs -->
 	  	<script src="{% static 'js/vue.js' %}"></script>
@@ -51,7 +53,7 @@
 	    <script src="{% static 'js/hammer.js' %}"></script>
 
 	    {% block javascript %}
-	   
+
 	    {% endblock javascript %}
 	</body>
 </html>
