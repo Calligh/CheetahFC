@@ -9,6 +9,10 @@ from website.models import (
 # Create your views here.
 
 def home(request):
+    """
+    :param request:
+    :return: mixed
+    """
     # sliders for the carousel
     sliders = PlayerSlider.sliders.all()
     slider_list = []
@@ -118,6 +122,10 @@ def home(request):
 
 
 def ceoMessage(request):
+    """
+    :param request:
+    :return: mixed
+    """
     msgs = CEOMessage.messages.order_by('-created_at')
     context = {
         'messages': msgs
@@ -126,6 +134,10 @@ def ceoMessage(request):
 
 
 def techTeam(request):
+    """
+    :param request:
+    :return: mixed
+    """
     technical_players = TechnicalTeam.technical_team.order_by('-created_at')
     context = {
         'technical_players': technical_players
@@ -134,6 +146,10 @@ def techTeam(request):
 
 
 def firstTeam(request):
+    """
+    :param request:
+    :return: mixed
+    """
     first_players = FirstTeam.first_team.order_by('-created_at')
     context = {
         'first_players': first_players
@@ -142,6 +158,10 @@ def firstTeam(request):
 
 
 def u17(request):
+    """
+    :param request:
+    :return: mixed
+    """
     under17 = U17.objects.order_by('-created_at')
     context = {
         'under17s': under17
@@ -150,6 +170,10 @@ def u17(request):
 
 
 def u15(request):
+    """
+    :param request:
+    :return: mixed
+    """
     under15 = U15.objects.order_by('-created_at');
     context = {
         'under15': under15
@@ -158,6 +182,10 @@ def u15(request):
 
 
 def u13(request):
+    """
+    :param request:
+    :return: mixed
+    """
     under13 = U13.objects.order_by('-created_at')
     context = {
         'under13s': under13
@@ -166,6 +194,10 @@ def u13(request):
 
 
 def news(request):
+    """
+    :param request:
+    :return: mixed
+    """
     news_room = CheetahNew.news.order_by('-created_at')
     context = {
         'news_room': news_room
@@ -174,6 +206,11 @@ def news(request):
 
 
 def news_details(request, news_id):
+    """
+    :param request:
+    :param news_id:
+    :return: object
+    """
     query = get_object_or_404(CheetahNew, pk=news_id)
     context = {
         'query': query
@@ -182,6 +219,10 @@ def news_details(request, news_id):
 
 
 def fixtures(request):
+    """
+    :param request:
+    :return: mixed
+    """
     all_fixtures = InfoBoard.info_board.order_by('-created_at')
     context = {
         'all_fixtures': all_fixtures

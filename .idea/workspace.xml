@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/website/views.py" line="89" />
+    <bookmark url="file://$PROJECT_DIR$/website/views.py" line="93" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="617f7106-6bea-4e24-aba8-e18d142f6fa7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/website/templates/website/news.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/templates/website/news_details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/teams/technicalteam.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/teams/technicalteam.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/teams/u13.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/teams/u13.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/templates/website/technicalteam.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/fixtures.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/website/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/website/templates/website/teams/firstteam.html" beforeDir="false" afterPath="$PROJECT_DIR$/website/templates/website/teams/firstteam.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/website/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/website/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,11 +44,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="news.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/news.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+            <state relative-caret-position="468">
+              <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -73,7 +65,7 @@
       <file leaf-file-name="fixtures.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/templates/website/fixtures.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="-180">
               <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
@@ -90,8 +82,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/website/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
+            <state relative-caret-position="270">
+              <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
               </folding>
@@ -111,23 +103,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/models.py">
+      <file leaf-file-name="technicalteam.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/website/templates/website/teams/technicalteam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="56" column="101" selection-start-line="56" selection-start-column="101" selection-end-line="56" selection-end-column="101" />
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1332">
+              <caret line="74" column="28" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="74" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="technicalteam.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/website/templates/website/teams/technicalteam.html">
+      <file leaf-file-name="firstteam.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/website/templates/website/teams/firstteam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
+            <state relative-caret-position="252">
+              <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -168,12 +157,13 @@
         <option value="$PROJECT_DIR$/website/templates/website/teams/u13.html" />
         <option value="$PROJECT_DIR$/website/models.py" />
         <option value="$PROJECT_DIR$/website/templates/website/fixtures.html" />
-        <option value="$PROJECT_DIR$/website/views.py" />
         <option value="$PROJECT_DIR$/website/urls.py" />
         <option value="$PROJECT_DIR$/website/templates/website/news_details.html" />
         <option value="$PROJECT_DIR$/website/templates/website/base/base.html" />
         <option value="$PROJECT_DIR$/website/templates/website/index.html" />
         <option value="$PROJECT_DIR$/website/templates/website/news.html" />
+        <option value="$PROJECT_DIR$/website/views.py" />
+        <option value="$PROJECT_DIR$/website/templates/website/teams/firstteam.html" />
       </list>
     </option>
   </component>
@@ -227,6 +217,14 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="website" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="cheetahfc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cheetahfc" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="website" type="462c0819:PsiDirectoryNode" />
+              <item name="teams" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -266,7 +264,7 @@
     <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15314835" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="R Packages" order="3" />
       <window_info anchor="right" id="R Graphics" order="3" />
@@ -275,7 +273,7 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32998884" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -474,13 +472,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/teams/technicalteam.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="69" column="27" lean-forward="true" selection-start-line="69" selection-start-column="27" selection-end-line="69" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/website/templates/website/teams/u13.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
@@ -498,28 +489,6 @@
           <folding>
             <element signature="e#633#665#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/fixtures.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#1;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#2;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#3;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#v-flex#4;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#4;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/news_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -545,20 +514,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/news.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/news_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/fixtures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#v-flex#0;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#1;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#2;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#3;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#v-flex#4;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#v-card#0;n#v-flex#4;n#v-card#0;n#v-flex#0;n#v-layout#0;n#v-flex#0;n#v-layout#0;n#v-container#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/website/templates/website/teams/technicalteam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1332">
+          <caret line="74" column="28" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="74" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/website/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="175" column="14" selection-start-line="175" selection-start-column="14" selection-end-line="175" selection-end-column="14" />
+        <state relative-caret-position="270">
+          <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/website/templates/website/news.html">
+    <entry file="file://$PROJECT_DIR$/website/templates/website/teams/firstteam.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="252">
+          <caret line="14" column="49" lean-forward="true" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
         </state>
       </provider>
     </entry>
