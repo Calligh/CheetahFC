@@ -16,7 +16,7 @@
       </v-flex>
       <v-flex d-flex id="top_blinkers" xs12 sm12 md3 lg3 xl3>
       	<v-card tile flat>
-      	  <img src="http://i255.photobucket.com/albums/hh145/xmrsdanifilth/Animals/Leopards%20and%20Jaguars/Leopard.gif" alt="Leopart Gif" width="400px" height="500px"/>
+      		<img src="http://i255.photobucket.com/albums/hh145/xmrsdanifilth/Animals/Leopards%20and%20Jaguars/Leopard.gif" alt="Leopart Gif" width="430px" height="500px"/>
       	</v-card>
       </v-flex>
     </v-layout>
@@ -57,30 +57,41 @@
          	        </v-flex>
          	        <v-flex xs12 sm12>
          	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Cheetah Ads
-         	        	  </v-card-title>
+         	        	  <img src="{% static 'images/cheetah_ad.jpg' %}" alt="Cheetah Ads" :style="{ width: w + 'px', marginLeft: mgL + 'px'}">
          	        	</v-card>
          	        </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card style="padding:2px 0px 6px 0px;">
-                      <v-flex xs12 md12 lg12>
+                        <v-flex xs12 md12 lg12>
                          <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;padding:0 5px 0 5px;">
                             <v-icon>event</v-icon>
                          Info Board</v-chip>
                       </v-flex>
+         	        	<v-card style="padding:2px 0px 6px 0px;">
+
          	        	  {% for data in info_board %}
                        {% if data.status|lower == 'active' %}
                         <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1>
 
                           <v-avatar size="82" color="red accent-3">
-                            <span class="white--text headline"></span>
+                            <span class="white--text headline">
+                                {% if data.score_board_team1 is not None %}
+                                  {{ data.score_board_team1 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
                           </v-avatar>
                            <v-avatar color="yellow darken-2" size="45">
                             <span class="white--text">VRS</span>
                           </v-avatar>
                            <v-avatar color="red accent-3" size="82">
-                            <span class="white--text headline"></span>
+                            <span class="white--text headline">
+                                {% if data.score_board_team2 is not None %}
+                                  {{ data.score_board_team2 }}
+                                {% else %}
+                                 N/A
+                                {% endif %}
+                            </span>
                           </v-avatar>
                         </v-flex>
                         <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
@@ -103,6 +114,7 @@
                             <v-icon>location_on</v-icon> <span style="font-weight: bold;font-size: 16px;line-height: 1.2;margin-left: 12px;">{{ data.venue }}</span>
                           </v-card>
                         </v-flex>
+
                       {% else %}
                         <v-flex xs12 md10 sm12 lg10 offset-md1 offset-lg1>
                           <v-card flat tile>
@@ -113,15 +125,13 @@
 
                       {% empty %}
                       {% endfor %}
+                            <v-flex xs12 md12>
+                                <v-spacer></v-spacer>
+                                <v-btn exact tag="a" href="{% url 'fixtures' %}" style="text-transform:capitalize;">View More Fixtures</v-btn>
+                            </v-flex>
          	        	</v-card>
          	        </v-flex>
-         	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Supporter Ads
-         	        	  </v-card-title>
-         	        	</v-card>
-         	        </v-flex>
+
          	        <v-flex xs12 sm12>
                     <v-card flat tile>
                       <v-flex xs12 md12 lg12>
@@ -144,16 +154,21 @@
                                   <div class="grey--text">{{ item.short_description | truncatechars:30 }}</div>
                                </div>
                              </v-card-title>
-                             <v-card-actions>
+                            <!--  <v-card-actions>
                                 <v-spacer></v-spacer>
                                <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
-                             </v-card-actions>
+                             </v-card-actions> -->
                           </v-card>
                        </v-flex>
                       {% empty %}
                       {% endfor %}
                     </v-card>
          	        </v-flex>
+                   <v-flex xs12 sm12>
+                    <v-card tile>
+                       <img src="{% static 'images/cheetah/supporters.jpg' %}" alt="Cheetah Ads" :style="{ width: w + 'px', marginLeft: mgL + 'px'}">
+                    </v-card>
+                  </v-flex>
          	        <v-flex xs12 sm12>
          	        	<v-card tile>
                         <v-card-media
@@ -186,17 +201,23 @@
                                  </v-card-media>
                                  <v-card-title primary-title>
                                    <div>
-                                      <div class="headline" style="font-size: 16px;font-weight: bold;">{{ data.headlines | truncatechars:25}}</div>
+                                      <div class="headline" style="font-size: 16px;font-weight: bold;"><marquee>
+                                        {{ data.headlines | truncatechars:25}}
+                                      </marquee></div>
                                       <div class="grey--text">{{ data.content | truncatechars:30 }}</div>
                                    </div>
                                  </v-card-title>
                                  <v-card-actions>
                                     <v-spacer></v-spacer>
-                                   <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
+                                     <v-btn flat href="{% url 'news_details' news_id=data.id  %}" exact>Read More</v-btn>
                                  </v-card-actions>
                               </v-card>
                            </v-flex>
                         {% endfor %}
+                             <v-flex xs12 md12 lg12 sm12>
+                                 <v-spacer></v-spacer>
+                                 <v-btn flat bottom block href="{% url 'news' %}" :style="newsAllBtn">View All News</v-btn>
+                             </v-flex>
                       </v-layout>
          	        </v-flex>
                     <v-flex xs12 sm12>
@@ -206,11 +227,12 @@
                             <v-icon>bar_chart</v-icon>
                          Clothing Lines</v-chip>
                         </v-flex>
-                         <v-flex xs12 sm12 md12>
+                         <v-flex xs12 sm12 md12 lg12>
                            <v-card tile>
 
                               {% for cloth in clothing_lines %}
-                              <img src="{{ cloth.cloth_picture.url }}" width="100%" height="100%">
+                                <img src="{{ cloth.cloth_picture.url }}" width="100%" height="100%">
+                                <v-btn flat text-sm-center href="{% url 'home' %}">Read More</v-btn>
                               {% empty %}
                               {% endfor %}
 
@@ -219,11 +241,26 @@
                       </v-layout>
                     </v-flex>
          	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-         	        	  <v-card-title primary-title>
-         	        	    Cheetah Star Reunion
-         	        	  </v-card-title>
-         	        	</v-card>
+                    <v-layout row wrap>
+                       <v-flex xs12 md12 lg12>
+                         <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                            <v-icon>flag</v-icon>
+                         Cheetah Star Reunion</v-chip>
+                        </v-flex>
+                        <v-card tile>
+                          <v-container fluid grid-list-sm>
+                            <v-layout row wrap>
+                              <v-flex xs12 sm12 md12 lg12>
+                                <!-- Star reunion here -->
+                                <star-reunion :star_list = "{{star_data}}"></star-reunion>
+                              </v-flex>
+                             <v-flex xs12>
+                                <v-btn flat @click.stop="dialog = true">View More</v-btn>
+                             </v-flex>
+                            </v-layout>
+                          </v-container>
+                        </v-card>
+                    </v-layout>
          	        </v-flex>
          	        <v-flex xs12 sm12>
 
@@ -234,8 +271,7 @@
                       </v-flex>
                       <v-card>
                       <v-container fluid grid-list-xs>
-                         <wallpaper-grid :wallpapers="{{ wallpapers }}"></wallpaper-grid>
-                         <v-btn flat text-sm-center href="{% url 'home' %}">View More</v-btn>
+                        <wallpaper-grid :wallpapers="{{ wallpapers }}"></wallpaper-grid>
                       </v-container>
                     </v-card>
          	        </v-flex>
@@ -319,10 +355,10 @@
                                 <div class="grey--text">{{ picture.short_description | truncatechars:30 }}</div>
                              </div>
                            </v-card-title>
-                           <v-card-actions>
+                        <!--    <v-card-actions>
                               <v-spacer></v-spacer>
                              <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
-                           </v-card-actions>
+                           </v-card-actions> -->
                         </v-card>
                      </v-flex>
                     {% empty %}
@@ -335,6 +371,35 @@
       </v-flex>
     </v-layout>
   </v-container>
+
+  <!-- Dialog full screen for the cheetah star reunion "View More" -->
+  <v-dialog
+        v-model="dialog"
+        fullscreen
+        hide-overlay
+        transition="dialog-bottom-transition"
+        scrollable
+      >
+        <v-card tile>
+          <v-toolbar card dark class="red accent-3">
+              <v-btn icon dark @click.native="dialog = false">
+                <v-icon>close</v-icon>
+              </v-btn>
+            <v-toolbar-title>Cheetah Star Reunion</v-toolbar-title>
+           <!--  <v-spacer></v-spacer>
+            <v-toolbar-items>
+              <v-btn dark flat @click.native="dialog = false">Save</v-btn>
+            </v-toolbar-items> -->
+          </v-toolbar>
+          <v-container fluid grid-list-md>
+              <v-layout row wrap>
+                  <v-flex xs12>
+                      <star-readmore v-bind:star_readmore="{{ star_readmore }}"></star-readmore>
+                  </v-flex>
+              </v-layout>
+          </v-container>
+        </v-card>
+      </v-dialog>
 </template>
 
 {% endblock content %}
@@ -356,20 +421,66 @@
 
    var wallpaper_grid = {
       props:['wallpapers'],
-      template:`<v-layout row wrap>
-                    <v-flex v-for="(image,i) in wallpapers" :key="i" xs4>
-                      <img :src="image.src" class="image" alt="lorem" width="100%" height="100%">
-                    </v-flex>
-                </v-layout>`
+      template:`
+              <v-carousel dark hide-delimiters>
+                  <v-carousel-item
+                  v-for="(wallpaper,i) in wallpapers"
+                  :src="wallpaper.src"
+                  :key="i">
+                  </v-carousel-item>
+               </v-carousel>`
    }
 
+   var star_reunion = {
+      props:['star_list'],
+      template: `
+               <v-flex id="starsGallery">
+                  <v-card
+                  v-for="(image_data,index) in star_list "
+                  v-bind:key = "image_data.src"
+                  v-bind:href = "image_data.src"
+                  tag = "a"
+                  flat
+                  >
+                      <img v-bind:src="image_data.src" :alt="image_data.src" width="200px" height="220px" />
+                  </v-card>
+               </v-flex>
+      `
+   }
+
+   var star_reunion_moreList = {
+      props:['star_readmore'],
+      template: ` <v-flex id="starMoreGallery">
+                  <v-card
+                  v-for="(image_data,index) in star_readmore "
+                  v-bind:key = "image_data.src"
+                  v-bind:href = "image_data.src"
+                  tag = "a"
+                  flat
+                  >
+                      <img v-bind:src="image_data.src" :alt="image_data.src" width="200px" height="220px" />
+                  </v-card>
+               </v-flex>`
+   }
 	new Vue({
 		el:"#app",
 		components:{
 			'carousel-tagger':carousel_tagger,
-         'wallpaper-grid':wallpaper_grid
+              'wallpaper-grid':wallpaper_grid,
+              'star-reunion': star_reunion,
+              'star-readmore': star_reunion_moreList
 		},
 		data:{
+      //Dialogs
+      dialog: false,
+      //Cheetah Ad size
+      w: 306,
+      mgL: 9,
+      newsAllBtn:{
+        marginTop: '25px',
+        textTransform: 'capitalize',
+        fontSize: '18px'
+      },
       valid:true,
       email:'',
       emailRules:[
@@ -387,14 +498,38 @@
       clear(){
         this.$refs.form.reset()
       }
+    },
+    mounted: function()
+    {
+      Vue.nextTick(function() {
+        //console.log(lightGallery)
+        // lightGallery(document.getElementById('starsGallery'), {
+        //   thumbnail: true,
+        //   animateThumb: true,
+        //   counter: false,
+        //   download: false
+
+        // });
+        $("#starsGallery").lightGallery();
+        $("#starMoreGallery").lightGallery();
+      })
+
     }
 	})
 </script>
 <style scoped>
-  img.image{
-    cursor: pointer;
-    pointer-events: auto;
-  }
+  #starMoreGallery,#starsGallery {
+    width:100%;
+    height:auto;
+    }
+  #starMoreGallery > a ,#starsGallery > a{
+   margin:5px;
+   display:inline-block;
+   }
+
+   #starMoreGallery > a > img, #starsGallery > a > img{
+    border-radius:8px;
+    }
 
 </style>
 

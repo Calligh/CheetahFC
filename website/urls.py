@@ -18,6 +18,15 @@ from django.conf.urls import url
 from website import views
 
 urlpatterns = [
-    url('',views.home, name='home'),
-    url(r'^ceo-message/$',views.ceoMessage, name='ceo-message'),
+    path('',views.home, name='home'),
+    path('ceo-message',views.ceoMessage, name='ceo-message'),
+    path('technical-team',views.techTeam, name='technical-team'),
+    path('first-team',views.firstTeam, name='first-team'),
+    path('under-17',views.u17, name='under-17'),
+    path('under-15',views.u15, name='under-15'),
+    path('under-13',views.u13, name='under-13'),
+    path('news', views.news, name='news'),
+    path('news-details/<int:news_id>/', views.news_details, name='news_details'),
+    path('fixtures',views.fixtures, name='fixtures'),
+
 ]

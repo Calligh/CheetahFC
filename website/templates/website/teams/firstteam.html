@@ -1,0 +1,89 @@
+{% extends 'website/base/base.html' %}
+
+{% block title %} Cheetah FC | First Team {% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<template>
+	<v-container fluid grid-list-md>
+	  <v-layout row wrap>
+	    {% for player in first_players %}
+			<v-flex xs12 sm2 lg2 md2 d-flex>
+				<v-card>
+					<v-card-media
+					  src="{{ player.picture.url }}"
+					  height="200px"
+					>
+					</v-card-media>
+
+					<v-card-title primary-title>
+					  <div>
+						<div class="headline">{{ player.player_name }}</div>
+					  </div>
+					</v-card-title>
+
+					<v-card-actions>
+					  <v-btn flat @click="dialog = !dialog">View Profile</v-btn>
+					  <v-spacer></v-spacer>
+					</v-card-actions>
+
+				  </v-card>
+			</v-flex>
+
+			<!-- Dialog for the displaying of extra data for each of the players -->
+			<v-dialog
+			  v-model="dialog"
+			  width="800"
+			  scrollable>
+			  <v-card>
+				<v-card-title
+				  class="headline grey lighten-2"
+				  primary-title
+				>
+				 {{ player.player_name }}
+				</v-card-title>
+
+				<v-card-text>
+					{% if player.profile is None %}
+					{{ player.profile }}
+					{% else %}
+					<h3 class="text-sm-center text-md-center"> No Write Up Available for "{{ player.player_name }}"</h3>
+					{% endif %}
+				</v-card-text>
+
+				<v-divider></v-divider>
+
+				<v-card-actions>
+				  <v-spacer></v-spacer>
+				  <v-btn
+					color="primary"
+					flat
+					@click="dialog = false"
+				  >
+					Close
+				  </v-btn>
+				</v-card-actions>
+			  </v-card>
+			</v-dialog>
+			{% empty %}
+			 <v-flex xs12 sm12 md12>
+				 <h3 class="align-center">No Profiles Available </h3>
+			 </v-flex>
+		  {% endfor %}
+	  </v-layout>
+	</v-container>
+</template>
+
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+		
+		}
+	})
+</script>
+{% endblock javascript %}

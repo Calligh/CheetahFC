@@ -5,7 +5,64 @@
 {% load static %}
 
 {% block content %}
-
+<template>
+	<v-parallax 
+	dark
+	src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+		<v-layout 
+		 align-center
+		 column
+		 justify-center
+		>
+		<h1 class="display-2 font-weight-thin mb-5">C.E.O</h1>
+		<h4 class="subheading">
+			<v-chip close selected>
+				Message(s) From the CEO
+			</v-chip>
+		</h4>
+		</v-layout>
+	</v-parallax>
+	<v-container fluid grid-list-md>
+	  <v-layout row wrap>
+	    <v-flex d-flex xs12 md12 lg12 sm12>
+	      <v-layout row wrap align-center justify-center fill-height>
+	        <v-flex d-flex xs12 sm12 md8 lg8>
+	          <v-card v-bind:style="{ marginTop: -130 + 'px' }">
+	            {% for message in messages %}
+	            	<v-jumbotron color="light">
+		               <v-layout align-center column justify-center>
+		                 <h2 class=" mb-3 mt-3 font-weight-thin" v-bind:style="{ fontSize: fontSizeTitle + 'px' }">
+		                  <v-avatar>
+		                  	{% if message.ceo_image == '' %}
+						      <img
+						        src="{% static 'images/man.svg' %}"
+						        alt="Sample Image"
+						      >
+						    {% else %}
+						      <img
+						        src="https://cdn.vuetifyjs.com/images/john.jpg"
+						        alt="John"
+						      >
+						    {% endif %}
+						    </v-avatar>
+							{{message.ceo_message_title}}
+						</h2>
+		               </v-layout>
+		              <v-divider></v-divider>
+		              <v-layout row wrap>
+		                <v-flex xs12 justify-center d-flex justify-center align-center class="ml-3 mt-3" :style="{ fontSize: fontSizeBody + 'px'}">
+		                	{{ message.ceo_message }}
+		                </v-flex>
+		              </v-layout>
+		            </v-jumbotron>
+	            {% endfor %}
+	          </v-card>
+	        </v-flex>
+	      </v-layout>
+	    </v-flex>
+	  </v-layout>
+	</v-container>
+</template>
 
 {% endblock content %}
 
@@ -14,8 +71,9 @@
 	new Vue({
 		el:"#app",
 		data:{
-			
-			
+			fontSizeTitle: 37,
+			fontSizeBody: 22,
+			margin: -130
 		}
 	})
 </script>
