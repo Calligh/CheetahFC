@@ -25,7 +25,9 @@ SECRET_KEY = '$dbx22ss-47u%$!m&-^9m_v(dm+4@$6*4nvsa5)d#8em5h-0if'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'voltron96.pythonanywhere.com'
+    ]
 
 
 # Application definition
@@ -77,10 +79,10 @@ WSGI_APPLICATION = 'cheetahfc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_cheetahfc',
-        'USER':'root',
-        'PASSWORD':'password',
-        'HOST':'localhost',
+        'NAME': 'voltron96$db_cheetahfc',
+        'USER':'voltron96',
+        'PASSWORD':'password@1234',
+        'HOST':'voltron96.mysql.pythonanywhere-services.com',
         'PORT':''
     }
 }
@@ -123,11 +125,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILE_DIR = [
-    os.path.join(BASE_DIR, 
-        'website/static/')
-]
+STATIC_ROOT = os.path.join(BASE_DIR,'website/static')
+# STATICFILE_DIR = [
+#     os.path.join(BASE_DIR,
+#         'website/static/')
+# ]
 
 MEDIA_URL = '/uploads/'
 
