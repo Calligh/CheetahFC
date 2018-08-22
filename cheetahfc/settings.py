@@ -26,7 +26,7 @@ SECRET_KEY = '$dbx22ss-47u%$!m&-^9m_v(dm+4@$6*4nvsa5)d#8em5h-0if'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'voltron96.pythonanywhere.com'
+    '127.0.0.1'
     ]
 
 
@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'cheetahfc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'voltron96$db_cheetahfc',
-        'USER':'voltron96',
-        'PASSWORD':'password@1234',
-        'HOST':'voltron96.mysql.pythonanywhere-services.com',
+        'NAME': 'db_cheetahfc',
+        'USER':'root',
+        'PASSWORD':'password',
+        'HOST':'localhost',
         'PORT':''
     }
 }
