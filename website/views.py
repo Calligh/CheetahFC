@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from website.models import (
     PlayerSlider, CheetahNew, NewsPosters, PlayerOfWeek, InfoBoard, ClothLining, StarReunion, Wallpaper,
     Video, TalentBridgeAdvert, JerseyAdvert, PictureOfWeek, SportsNew, CEOMessage, TechnicalTeam, FirstTeam,
-    U13, U15, U17
+    U13, U15, U17,PlayersAbroad,Gallery
 )
 
 
@@ -176,7 +176,7 @@ def u15(request):
     """
     under15 = U15.objects.order_by('-created_at');
     context = {
-        'under15': under15
+        'under15s': under15
     }
     return render(request, 'website/teams/u15.html', context)
 
@@ -241,3 +241,22 @@ def fixtures(request):
         'all_fixtures': all_fixtures
     }
     return render(request, 'website/fixtures.html', context)
+
+
+def playersAbroad(request):
+    """
+    :param request:
+    :return: mixed
+    """
+    players_abroad = PlayersAbroad.objects.order_by('-created_at')
+    context = {
+        'players_abroad': players_abroad
+    }
+    return render(request, 'website/players_abroad.html',context)
+
+
+def gallery(request):
+    context = {
+
+    }
+    return render(request, 'website/gallery.html',context)

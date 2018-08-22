@@ -31,7 +31,7 @@
 	            {% for message in messages %}
 	            	<v-jumbotron color="light">
 		               <v-layout align-center column justify-center>
-		                 <h2 class=" mb-3 mt-3 font-weight-thin" v-bind:style="{ fontSize: fontSizeTitle + 'px' }">
+		                 <h2 class=" mb-3 mt-3 font-weight-thin" :style="{ fontSize: fontSizeTitle + 'px' }">
 		                  <v-avatar>
 		                  	{% if message.ceo_image == '' %}
 						      <img

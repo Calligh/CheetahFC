@@ -1,0 +1,63 @@
+{% extends 'website/base/base.html' %}
+
+{% block title %} Cheetah FC | Gallery {% endblock title %}
+
+{% load static %}
+
+{% block content %}
+<template>
+	<v-container fluid grid-list-md a>
+	  <v-layout row wrap>
+	    <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
+            <v-card>
+                 <v-tabs
+                centered
+                color="red accent-3"
+                dark
+                icons-and-text
+              >
+                    <v-tabs-slider color="white"></v-tabs-slider>
+
+                    <v-tab href="#tab-1">
+                      Photos
+                      <v-icon medium>photo</v-icon>
+                    </v-tab>
+
+                    <v-tab href="#tab-2">
+                      Videos
+                      <v-icon medium>videocam</v-icon>
+                    </v-tab>
+
+                    <v-tab href="#tab-3">
+                      Wallpapers
+                      <v-icon medium>wallpaper</v-icon>
+                    </v-tab>
+
+                    <v-tab-item
+                      v-for="i in 3"
+                      :id="'tab-' + i"
+                      :key="i"
+                    >
+                      <v-card flat>
+                        <v-card-text>{{ text }}</v-card-text>
+                      </v-card>
+                    </v-tab-item>
+                  </v-tabs>
+            </v-card>
+	    </v-flex>
+	  </v-layout>
+	</v-container>
+</template>
+
+{% endblock content %}
+
+{% block javascript %}
+<script type="text/javascript">
+	new Vue({
+		el:"#app",
+		data:{
+		  text: ''
+		}
+	})
+</script>
+{% endblock javascript %}

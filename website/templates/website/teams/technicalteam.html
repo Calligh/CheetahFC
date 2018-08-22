@@ -8,7 +8,7 @@
 <template>
 	<v-container fluid grid-list-md>
 	  <v-layout row wrap>
-	    <v-flex d-flex xs12 md12 lg12 sm12>
+	    <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
 			<v-layout row wrap>
 		      {% for player in technical_players %}
 				<v-flex xs12 sm2 lg2 md2>
@@ -69,9 +69,19 @@
 				  </v-card>
 				</v-dialog>
 				{% empty %}
-				 <v-flex xs12 sm12 md12>
-					 <h3 class="align-center">No Profiles Available </h3>
-				 </v-flex>
+				 <v-flex xs12 sm12 md12 lg12>
+					<v-layout row wrap d-flex>
+						<v-flex xs12 sm4 md4 lg4 offset-sm4 offset-md4 offset-lg4>
+						   <v-card flat tag="div" style="margin-top:101px;text-align:center;">
+							   <img src="{% static 'images/group.svg' %}" alt="Placeholder Image" :style="holderStyle"/>
+						   </v-card>
+
+							<v-card flat>
+								<h3 style="text-align:center;font-weight:500;font-size:22px;padding:15px 0 15px 0;" class="grey--text text--darken-2">No Data Available Here</h3>
+							</v-card>
+						</v-flex>
+					</v-layout>
+				</v-flex>
 				{% endfor %}
 			</v-layout>
 	    </v-flex>

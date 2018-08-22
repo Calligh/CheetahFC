@@ -16,6 +16,7 @@ class CheetahNew(models.Model):
     preview_image = models.FileField(upload_to='news/')
     headlines = models.CharField(max_length=50, default='')
     content = models.TextField(max_length=50000, default='')
+    published_by = models.CharField(max_length=150, default='', blank=True)
     pub_date = models.DateField()
     created_at = models.DateTimeField(auto_now=True)
 
@@ -164,5 +165,16 @@ class U15(models.Model):
 class U13(models.Model):
     picture = models.FileField(upload_to='under13/%Y/%m')
     player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..",blank=True)
+    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
+
+
+class PlayersAbroad(models.Model):
+    picture = models.FileField(upload_to="players_abroad/%Y/%m")
+    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
+    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    created_at = models.DateTimeField(auto_now=True)
+
+
+class Gallery(models.Model):
+    pass

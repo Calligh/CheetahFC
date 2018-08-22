@@ -1,16 +1,16 @@
 {% extends 'website/base/base.html' %}
 
-{% block title %} Cheetah FC | First Team {% endblock title %}
+{% block title %} Cheetah FC | Players Abroad {% endblock title %}
 
 {% load static %}
 
 {% block content %}
 <template>
-	<v-container fluid grid-list-md>
+	<v-container fluid grid-list-md a>
 	  <v-layout row wrap>
-	        <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
+          <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
 			<v-layout row wrap>
-		      {% for player in first_players %}
+		      {% for player in players_abroad %}
 				<v-flex xs12 sm2 lg2 md2>
 					<v-card>
 						<v-card-media
@@ -73,7 +73,7 @@
 					<v-layout row wrap d-flex>
 						<v-flex xs12 sm4 md4 lg4 offset-sm4 offset-md4 offset-lg4>
 						   <v-card flat tag="div" style="margin-top:101px;text-align:center;">
-							   <img src="{% static 'images/group.svg' %}" alt="Placeholder Image" :style="holderStyle"/>
+							   <img src="{% static 'images/group.svg' %}" alt="Placeholder Image"/>
 						   </v-card>
 
 							<v-card flat>
@@ -84,7 +84,7 @@
 				</v-flex>
 				{% endfor %}
 			</v-layout>
-	    </v-flex>
+	      </v-flex>
 	  </v-layout>
 	</v-container>
 </template>
@@ -96,10 +96,7 @@
 	new Vue({
 		el:"#app",
 		data:{
-		    dialog:false,
-		    holderStyle:{
-		        width:'400px'
-		    }
+
 		}
 	})
 </script>

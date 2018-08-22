@@ -6,8 +6,18 @@
 
 {% block content %}
 <template>
-    <v-container grid-list-md fluid :style="newsStyle">
-    </v-container>
+    <v-parallax
+	dark
+    height="300"
+	src="{{ query.preview_image.url }}">
+		<v-layout
+		 align-center
+		 column
+		 justify-center
+		>
+		 <v-chip selected close style="font-size:22px;">{{ query.headlines| upper}}</v-chip>
+		</v-layout>
+	</v-parallax>
     <v-container grid-list-md fluid>
         <v-layout row pb-2>
           <v-flex xs8 offset-xs2>
@@ -21,7 +31,16 @@
                        <span>Back To News</span>
                    </v-tooltip>
                 </v-btn>
-                <v-toolbar-title class="body-2 grey--text">Title</v-toolbar-title>
+                <v-toolbar-title class="body-2 grey--text text--darken-3">
+                   Published by :
+                    <v-chip selected close>
+                        {% if query.published_by != '' %}
+                        {{ query.published_by | upper }}
+                        {% elif query.published_by == '' %}
+                          No Publisher Name
+                        {% endif %}
+                    </v-chip>
+                </v-toolbar-title>
 
                 <v-spacer></v-spacer>
                 <v-btn icon @click="dialog = !dialog">
@@ -29,7 +48,7 @@
                       <v-icon slot="activator" attach>
                           photo
                       </v-icon>
-                      <span>View More Images About News</span>
+                      <span>View More Images About This News</span>
                   </v-tooltip>
                 </v-btn>
 
@@ -46,7 +65,12 @@
               <v-divider></v-divider>
 
               <v-card-text style="height: auto;">
+                  {{ query.content }}
+              </v-card-text>
 
+                <v-divider></v-divider>
+              <v-card-text>
+                  Published on: {{ query.pub_date | date:"M d" }} , {{ query.pub_date | date:"Y" }}
               </v-card-text>
             </v-card>
           </v-flex>
@@ -69,7 +93,23 @@
             <v-container fluid grid-list-md style="padding:4px !important;">
                 <v-layout row d-flex>
                     <v-flex wrap xs12 md12 lg12>
-                        <dialog-carousel :all_images="{{ posters }}"></dialog-carousel>
+                        {% if posters|length > 0 %}
+                             <dialog-carousel :all_images="{{ posters }}"></dialog-carousel>
+                        {% else %}
+                             <v-flex xs12 sm12 md12 lg12>
+                                 <v-layout row wrap d-flex>
+                                    <v-flex xs12 sm4 md4 lg4 offset-sm4 offset-md4 offset-lg4>
+                                           <v-card flat tag="div" style="margin-top:60px;text-align:center;">
+                                               <img src="{% static 'images/photo-camera.svg' %}" alt="Placeholder Image" :style="holderStyle"/>
+                                           </v-card>
+
+                                            <v-card flat>
+                                                <h3 style="text-align:center;font-weight:500;font-size:22px;padding:15px 0 15px 0;" class="grey--text text--darken-2">No More Images on this headline "{{ query.headlines }}"</h3>
+                                            </v-card>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-flex>
+                        {% endif %}
                     </v-flex>
                 </v-layout>
             </v-container>
@@ -87,7 +127,7 @@
     var carousel_tagger = {
         props:['all_images'],
         template:`
-            <v-carousel light>
+            <v-carousel dark>
 			   <v-carousel-item
 			    v-for="(image,i) in all_images"
 			    :src="image.src"

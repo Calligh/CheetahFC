@@ -8,14 +8,14 @@
 <template>
     <v-container grid-list-md fluid>
         <v-layout row wrap>
-            <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+            <v-flex xs12 sm12 md10 lg10 offset-md1 offset-lg1>
                 <v-layout row d-flex fill-height>
                     {% for data in news_room %}
                        <v-flex xs3 sm2 md2 lg2 xl2>
                           <v-card hover>
                              <v-card-media
                                class="white--text"
-                               height="170px"
+                               height="225px"
                                src="{{ data.preview_image.url }}"
                              >
                              </v-card-media>

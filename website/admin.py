@@ -2,18 +2,18 @@ from django.contrib import admin
 from website.models import (
     PlayerSlider, CheetahNew, NewsPosters, PlayerOfWeek, InfoBoard, ClothLining, StarReunion, Wallpaper,
     Video, TalentBridgeAdvert, JerseyAdvert, PictureOfWeek, SportsNew, CEOMessage, TechnicalTeam, FirstTeam,
-    U13, U15, U17
+    U13, U15, U17, PlayersAbroad, Gallery
 )
 
 
 # Register your models here.
 class AdminPlayersImages(admin.ModelAdmin):
-    list_display = ('players_image', 'caption', 'created_at')
+    list_display = ('caption', 'players_image', 'created_at')
     search_fields = ('created_at', 'image_title')
 
 
 class AdminCheetahNews(admin.ModelAdmin):
-    list_display = ('preview_image', 'headlines', 'created_at')
+    list_display = ('headlines', 'preview_image', 'content', 'created_at')
     search_fields = ('headlines', 'created_at')
 
 
@@ -37,7 +37,7 @@ class AdminClothLining(admin.ModelAdmin):
 
 
 class AdminStarReunion(admin.ModelAdmin):
-    list_display = ('picture', 'caption', 'created_at')
+    list_display = ('caption', 'picture', 'created_at')
     search_fields = ('caption', 'created_at')
 
 
@@ -77,26 +77,31 @@ class AdminCEOMsg(admin.ModelAdmin):
 
 
 class AdminTechnicalTeam(admin.ModelAdmin):
-    list_display = ('picture', 'player_name', 'profile')
+    list_display = ('player_name', 'picture', 'profile')
     search_fields = ('player_name',)
 
 
 class AdminFirstTeam(admin.ModelAdmin):
-    list_display = ('picture', 'player_name', 'profile')
+    list_display = ('player_name', 'picture', 'profile')
     search_fields = ('player_name',)
 
 
 class AdminU17(admin.ModelAdmin):
-    list_display = ('picture', 'player_name', 'profile')
+    list_display = ('player_name', 'picture', 'profile')
     search_fields = ('player_name',)
 
 
 class AdminU15(admin.ModelAdmin):
-    list_display = ('picture', 'player_name', 'profile')
+    list_display = ('player_name', 'picture', 'profile')
     search_fields = ('player_name',)
 
 
 class AdminU13(admin.ModelAdmin):
+    list_display = ('player_name', 'picture', 'profile')
+    search_fields = ('player_name',)
+
+
+class AdminPlayersAbroad(admin.ModelAdmin):
     list_display = ('picture', 'player_name', 'profile')
     search_fields = ('player_name',)
 
@@ -120,3 +125,4 @@ admin.site.register(FirstTeam, AdminFirstTeam)
 admin.site.register(U17, AdminU17)
 admin.site.register(U15, AdminU15)
 admin.site.register(U13, AdminU13)
+admin.site.register(PlayersAbroad, AdminPlayersAbroad)

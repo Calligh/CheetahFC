@@ -8,9 +8,9 @@
 <template>
 	<v-container fluid grid-list-md>
 	  <v-layout row wrap>
-	    <v-flex d-flex xs12 md12 lg12 sm12>
+          <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
 			<v-layout row wrap>
-		      {% for player in technical_players %}
+		      {% for player in under13s %}
 				<v-flex xs12 sm2 lg2 md2>
 					<v-card>
 						<v-card-media
@@ -69,15 +69,22 @@
 				  </v-card>
 				</v-dialog>
 				{% empty %}
-				 <v-flex xs12 sm12 md12>
-					 <v-card flat>
-						 <img src="{% static 'images/man.svg' %}" alt="Empty Image Here" width="400px" id="empty_hold">
-					 </v-card>
-					 <h2 class="text-sm-center" style="margin-top:10px;font-weight:400;font-size:20px;">No Profiles Available </h2>
-				 </v-flex>
+				 <v-flex xs12 sm12 md12 lg12>
+					<v-layout row wrap d-flex>
+						<v-flex xs12 sm4 md4 lg4 offset-sm4 offset-md4 offset-lg4>
+						   <v-card flat tag="div" style="margin-top:101px;text-align:center;">
+							   <img src="{% static 'images/group.svg' %}" alt="Placeholder Image" :style="holderStyle"/>
+						   </v-card>
+
+							<v-card flat>
+								<h3 style="text-align:center;font-weight:500;font-size:22px;padding:15px 0 15px 0;" class="grey--text text--darken-2">No Data Available Here</h3>
+							</v-card>
+						</v-flex>
+					</v-layout>
+				</v-flex>
 				{% endfor %}
 			</v-layout>
-	    </v-flex>
+	      </v-flex>
 	  </v-layout>
 	</v-container>
 </template>
@@ -89,16 +96,11 @@
 	new Vue({
 		el:"#app",
 		data:{
-		
+		    dialog:false,
+		    holderStyle:{
+		        width:'400px'
+		    }
 		}
 	})
 </script>
-<style scoped>
-	img#empty_hold{
-		position:relative;
-		left:38%;
-		right:0;
-		margin-top:50px;
-	}
-</style>
 {% endblock javascript %}
