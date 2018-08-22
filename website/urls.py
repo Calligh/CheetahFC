@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from website import views
 
+# for hosting imports
+# from django.conf.urls import url
+
 urlpatterns = [
     path('',views.home, name='home'),
     path('ceo-message',views.ceoMessage, name='ceo-message'),
@@ -29,3 +32,21 @@ urlpatterns = [
     path('news-details/<int:news_id>/', views.news_details, name='news_details'),
     path('fixtures',views.fixtures, name='fixtures'),
 ]
+
+"""
+ Hosting configurations for the urls here --> Need a new server for the new configs to work
+"""
+
+# urlpatterns = [
+#     url(r'^$',views.home, name='home'),
+#     url(r'^ceo-message/$',views.ceoMessage, name='ceo-message'),
+#     url(r'^technical-team/$',views.techTeam, name='technical-team'),
+#     url(r'^first-team/$',views.firstTeam, name='first-team'),
+#     url(r'^under-17/$',views.u17, name='under-17'),
+#     url(r'^under-15/$',views.u15, name='under-15'),
+#     url(r'^under-13/$',views.u13, name='under-13'),
+#     url(r'^news/$', views.news, name='news'),
+#     url(r'^news-details/(?P<news_id>\d+)/$', views.news_details, name='news_details'),
+#     url(r'^fixtures/$',views.fixtures, name='fixtures'),
+#
+# ]

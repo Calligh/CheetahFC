@@ -6,21 +6,112 @@
 
 {% block content %}
 <template>
+    <v-container grid-list-md fluid :style="newsStyle">
+    </v-container>
     <v-container grid-list-md fluid>
-        <v-layout row wrap>
+        <v-layout row pb-2>
+          <v-flex xs8 offset-xs2>
+            <v-card class="card--flex-toolbar">
+              <v-toolbar card prominent>
+                <v-btn icon tag="a" href="{% url 'news' %}">
+                   <v-tooltip bottom>
+                       <v-icon slot="activator">
+                        arrow_back
+                       </v-icon>
+                       <span>Back To News</span>
+                   </v-tooltip>
+                </v-btn>
+                <v-toolbar-title class="body-2 grey--text">Title</v-toolbar-title>
 
+                <v-spacer></v-spacer>
+                <v-btn icon @click="dialog = !dialog">
+                  <v-tooltip bottom>
+                      <v-icon slot="activator" attach>
+                          photo
+                      </v-icon>
+                      <span>View More Images About News</span>
+                  </v-tooltip>
+                </v-btn>
+
+                <v-btn icon>
+                  <v-tooltip bottom>
+                      <v-icon slot="activator">
+                        share
+                      </v-icon>
+                      <span>Share News</span>
+                  </v-tooltip>
+                </v-btn>
+              </v-toolbar>
+
+              <v-divider></v-divider>
+
+              <v-card-text style="height: auto;">
+
+              </v-card-text>
+            </v-card>
+          </v-flex>
         </v-layout>
     </v-container>
+    <!-- Dialog for displaying a slider of all the associated images -->
+    <v-dialog
+      v-model="dialog"
+      width="900"
+    >
+      <v-card>
+        <!--<v-card-title-->
+          <!--class="headline grey lighten-2"-->
+          <!--primary-title-->
+        <!--&gt;-->
+          <!--All Images To This News-->
+        <!--</v-card-title>-->
+
+        <v-card-text style="padding:0px !important;">
+            <v-container fluid grid-list-md style="padding:4px !important;">
+                <v-layout row d-flex>
+                    <v-flex wrap xs12 md12 lg12>
+                        <dialog-carousel :all_images="{{ posters }}"></dialog-carousel>
+                    </v-flex>
+                </v-layout>
+            </v-container>
+        </v-card-text>
+
+        <v-divider></v-divider>
+      </v-card>
+    </v-dialog>
 </template>
 
 {% endblock content %}
 
 {% block javascript %}
 <script type="text/javascript">
+    var carousel_tagger = {
+        props:['all_images'],
+        template:`
+            <v-carousel light>
+			   <v-carousel-item
+			    v-for="(image,i) in all_images"
+			    :src="image.src"
+			    :key="i">
+			   </v-carousel-item>
+			</v-carousel>`
+    }
     new Vue({
         el: "#app",
+        components:{
+            'dialog-carousel':carousel_tagger
+        },
         data: {
+            dialog:false,
+            newsStyle:{
+                height:'185px',
+                backgroundColor:'red'
+            }
         }
     });
 </script>
+<style scoped>
+    .card--flex-toolbar{
+        margin-top:-72px;
+     }
+</style>
 {% endblock javascript %}

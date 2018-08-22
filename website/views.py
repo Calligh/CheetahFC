@@ -212,8 +212,21 @@ def news_details(request, news_id):
     :return: object
     """
     query = get_object_or_404(CheetahNew, pk=news_id)
+    posters = NewsPosters.objects.filter(cheetah_news=query.id)
+    posters_list = []
+    for image in posters:
+        image_path = image.associate_images.url
+        poster_obj = dict({ 'src' : image_path })
+
+        if poster_obj is not None:
+            posters_list.append(poster_obj)
+        else:
+            poster_obj = "No images available"
+            posters_list.append(poster_obj)
+
     context = {
-        'query': query
+        'query': query,
+        'posters': posters_list
     }
     return render(request, 'website/news_details.html', context)
 
