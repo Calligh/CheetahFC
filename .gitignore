@@ -2,3 +2,4 @@
 .idea/workspace.xml
 website/__pycache__/views.cpython-35.pyc
 uploads/
+website/migrations/*

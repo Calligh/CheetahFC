@@ -102,9 +102,12 @@ class AdminU13(admin.ModelAdmin):
 
 
 class AdminPlayersAbroad(admin.ModelAdmin):
-    list_display = ('picture', 'player_name', 'profile')
+    list_display = ('player_name', 'picture', 'profile')
     search_fields = ('player_name',)
 
+class AdminGallery(admin.ModelAdmin):
+    list_display = ('image_caption','image_url')
+    search_field = ('image_caption',)
 
 admin.site.register(PlayerSlider, AdminPlayersImages)
 admin.site.register(CheetahNew, AdminCheetahNews)
@@ -126,3 +129,4 @@ admin.site.register(U17, AdminU17)
 admin.site.register(U15, AdminU15)
 admin.site.register(U13, AdminU13)
 admin.site.register(PlayersAbroad, AdminPlayersAbroad)
+admin.site.register(Gallery, AdminGallery)

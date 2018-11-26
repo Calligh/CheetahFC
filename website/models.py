@@ -101,7 +101,7 @@ class PictureOfWeek(models.Model):
 
 
 class Video(models.Model):
-    video = models.FileField(upload_to='videos/%Y/%m/%d/')
+    video = models.CharField(max_length=65535,default='', blank=True, help_text="Paste Youtube Link Here ..")
     created_at = models.DateTimeField(auto_now=True)
 
 
@@ -177,4 +177,7 @@ class PlayersAbroad(models.Model):
 
 
 class Gallery(models.Model):
-    pass
+    image_url = models.FileField(upload_to="gallery/%Y/%m")
+    image_caption = models.TextField(max_length=120, default= '', help_text="Image Caption ..")
+    created_at = models.DateTimeField(auto_now=True)
+

@@ -327,11 +327,25 @@
                 </v-card>
               </v-flex>
               <v-flex xs12 md12 sm12>
-                <v-card>
-                  <v-card-title primary-title>
-                    Talent Bridge Ads
-                  </v-card-title>
-                </v-card>
+                  <v-flex xs12 md12 lg12>
+                      <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                         <v-icon>loyalty</v-icon>
+                      Talent Bridge Ad</v-chip>
+                   </v-flex>
+                  {% for bridge in talents %}
+                  <v-card hover>
+                      <v-card-media
+                        class="white--text"
+                        height="300px"
+                        src="{{ bridge.ad_image.url }}"
+                      >
+                      </v-card-media>
+                   <!--    <v-card-actions>
+                         <v-spacer></v-spacer>
+                        <v-btn flat href="{% url 'home' %}" exact>Read More</v-btn>
+                      </v-card-actions> -->
+                   </v-card>
+                  {% endfor %}
               </v-flex>
               <v-flex xs12 md12 sm12>
                <v-card flat tile>
@@ -365,11 +379,33 @@
                     {% endfor %}
                   </v-card>
               </v-flex>
+              <v-flex xs12 md12 lg12>
+                <v-card flat tile>
+                    <v-flex xs12 md12 lg12>
+                        <v-chip color="red accent-3" text-color="white" selected  style="font-size: 16px;">
+                           <v-icon>videocam</v-icon>
+                        Video</v-chip>
+                     </v-flex>
+                  <v-flex xs12 md12 lg12>
+                    {% for v in videos %}
+                    <iframe width="400" height="500"
+                      src="{{v.video}}">
+                    </iframe>
+                    {% empty %}
+                    <p> No videos available</p>
+                    {% endfor %}
+                  </v-flex>
+                </v-card>
+              </v-flex>
          	  </v-layout>
          	</v-flex>
          </v-layout>
       </v-flex>
     </v-layout>
+    <v-footer color="red accent-3" class="pa-3">
+        <v-spacer></v-spacer>
+        <div style="color:white;">&copy; 2018 </div>
+      </v-footer>
   </v-container>
 
   <!-- Dialog full screen for the cheetah star reunion "View More" -->
@@ -486,6 +522,20 @@
       emailRules:[
         v => !!v || 'E-mail is required',
         v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+      ],
+    
+      links: [
+        {
+          title: "Home",
+          href: "home"
+        },
+        {
+          title: "Ceo Message",
+          href: "ceo-message"
+        },
+        {
+          title: "Teams"
+        }
       ]
 
 		},

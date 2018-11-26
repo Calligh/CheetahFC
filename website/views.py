@@ -103,6 +103,11 @@ def home(request):
         else:
             data = " No Star Images Available .."
             star_readList.append(data)
+    
+    # Video , the youtube link will be here
+    videos = Video.objects.order_by('-created_at')[:1]
+
+    talent_bridge = TalentBridgeAdvert.objects.order_by('-created_at')[:1]
 
     context = {
         'sliders': slider_list,
@@ -115,7 +120,9 @@ def home(request):
         'wallpapers': wallpaper_list,
         'clothing_lines': cloth_lining,
         'star_data': star_list,
-        'star_readmore': star_readList
+        'star_readmore': star_readList,
+        'videos': videos,
+        'talents': talent_bridge
     }
 
     return render(request, 'website/index.html', context)
@@ -256,7 +263,44 @@ def playersAbroad(request):
 
 
 def gallery(request):
-    context = {
+    wallpaper = Wallpaper.objects.order_by('-created_at')
+    wallpaper_data = []
+    for wall in wallpaper:
+        image_path = wall.wallpaper_image.url
+        wall_obj = dict({ 'src' : image_path })
 
+        if wall_obj is not None:
+            wallpaper_data.append(wall_obj)
+        else:
+            wall_obj = "No images available"
+            wallpaper_data.append(wall_obj)
+    
+    gallery = Gallery.objects.order_by('-created_at')
+    gallery_data = []
+    for gal in gallery:
+        image_path = gal.image_url.url
+        gal_obj = dict({ 'src': image_path })
+
+        if gal_obj is not None:
+            gallery_data.append(gal_obj)
+        else:
+            gal_obj = "No Images available"
+            gallery_data.append(gal_obj)
+    
+    video = Video.objects.order_by('-created_at')
+    video_data = []
+    for v in video:
+        video_path = v.video
+        video_obj = dict({ 'src': video_path })
+    if video_obj is not None:
+        video_data.append(video_obj)
+    else:
+        video_obj = "No Videos Available"
+        video_data.append(video_obj)
+
+    context = {
+        "wallpapers" : wallpaper_data,
+        "galleries": gallery_data,
+        "videos":  video_data
     }
     return render(request, 'website/gallery.html',context)

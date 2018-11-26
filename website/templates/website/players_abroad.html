@@ -10,7 +10,7 @@
 	  <v-layout row wrap>
           <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
 			<v-layout row wrap>
-		      {% for player in players_abroad %}
+					{% for player in players_abroad %}
 				<v-flex xs12 sm2 lg2 md2>
 					<v-card>
 						<v-card-media
@@ -26,7 +26,7 @@
 						</v-card-title>
 
 						<v-card-actions>
-						  <v-btn flat @click="dialog = !dialog">View Profile</v-btn>
+						  <v-btn flat @click="$set(dialog,{{player.id}},true)">View Profile</v-btn>
 						  <v-spacer></v-spacer>
 						</v-card-actions>
 
@@ -35,7 +35,7 @@
 
 				<!-- Dialog for the displaying of extra data for each of the players -->
 				<v-dialog
-				  v-model="dialog"
+				  v-model="dialog[{{player.id}}]"
 				  width="800"
 				  scrollable>
 				  <v-card>
@@ -47,7 +47,7 @@
 					</v-card-title>
 
 					<v-card-text>
-						{% if player.profile is None %}
+						{% if player.profile is not None %}
 						{{ player.profile }}
 						{% else %}
 						<h3 class="text-sm-center text-md-center"> No Write Up Available for "{{ player.player_name }}"</h3>
@@ -61,7 +61,7 @@
 					  <v-btn
 						color="primary"
 						flat
-						@click="dialog = false"
+						@click="$set(dialog,{{player.id}},false)"
 					  >
 						Close
 					  </v-btn>
@@ -96,7 +96,7 @@
 	new Vue({
 		el:"#app",
 		data:{
-
+			dialog: {},
 		}
 	})
 </script>

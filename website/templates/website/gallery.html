@@ -9,41 +9,58 @@
 	<v-container fluid grid-list-md a>
 	  <v-layout row wrap>
 	    <v-flex d-flex xs12 md10 lg10 sm12 offset-md1 offset-lg1>
-            <v-card>
-                 <v-tabs
-                centered
-                color="red accent-3"
-                dark
-                icons-and-text
-              >
-                    <v-tabs-slider color="white"></v-tabs-slider>
-
-                    <v-tab href="#tab-1">
-                      Photos
-                      <v-icon medium>photo</v-icon>
-                    </v-tab>
-
-                    <v-tab href="#tab-2">
-                      Videos
-                      <v-icon medium>videocam</v-icon>
-                    </v-tab>
-
-                    <v-tab href="#tab-3">
-                      Wallpapers
-                      <v-icon medium>wallpaper</v-icon>
-                    </v-tab>
-
-                    <v-tab-item
-                      v-for="i in 3"
-                      :id="'tab-' + i"
-                      :key="i"
-                    >
-                      <v-card flat>
-                        <v-card-text>{{ text }}</v-card-text>
-                      </v-card>
-                    </v-tab-item>
-                  </v-tabs>
+          <v-tabs
+          centered
+          color="red accent-3"
+          dark
+          icons-and-text
+        >
+          <v-tabs-slider color="white"></v-tabs-slider>
+      
+          <v-tab href="#tab-1">
+            Photos
+            <v-icon>photo</v-icon>
+          </v-tab>
+      
+          <v-tab href="#tab-2">
+            Gallery
+            <v-icon>image</v-icon>
+          </v-tab>
+      
+          <v-tab href="#tab-3">
+            Videos
+            <v-icon>videocam</v-icon>
+          </v-tab>
+      
+          <!-- <v-tab-item
+            v-for="i in 3"
+            :id="'tab-' + i"
+            :key="i"
+          >
+            <v-card flat>
+              <v-card-text>jhjkhkjhjhkjh</v-card-text>
             </v-card>
+          </v-tab-item> -->
+          <v-tab-item
+            id="tab-1"
+          >
+            <wallpaper_grid :wallpapers="{{wallpapers}}"></wallpaper_grid>
+          </v-tab-item>
+          <v-tab-item
+            id="tab-2"
+          >
+            <v-card flat>
+              <v-card-text>jhjkhkjhjhkjh jgjghjghjg</v-card-text>
+            </v-card>
+          </v-tab-item>
+          <v-tab-item
+            id="tab-3"
+          >
+            <v-card flat>
+              <v-card-text>jhjkhkjhjhkjh</v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs>
 	    </v-flex>
 	  </v-layout>
 	</v-container>
@@ -53,10 +70,38 @@
 
 {% block javascript %}
 <script type="text/javascript">
+
+var wallpaper_grid = {
+  props: ['wallpapers'],
+  template: `
+            <v-layout row wrap>
+                <v-flex
+                v-for="(picture, index) in wallpapers"
+                :key="index"
+                xs3 md3
+              >
+                <img
+                  :src="picture.src"
+                  alt="lorem"
+                  class="image"
+                  height="100%"
+                  width="100%"
+                >
+              </v-flex>
+            </v-layout>
+  `
+}
 	new Vue({
 		el:"#app",
+    components: {
+      'wallpaper_grid': wallpaper_grid
+    },
 		data:{
-		  text: ''
+		  text: 'jkljkjkjljk',
+      gallery: [],
+      videos: [],
+      wallpapers: [],
+    
 		}
 	})
 </script>
