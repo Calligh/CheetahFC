@@ -61,8 +61,92 @@
 	  	{% block content %}
 	  	{% endblock content %}
 	  </main>
-	  <footer>
-	  	{% block footer %}
+		<footer
+		 style="position: relative;
+		 bottom: 0;
+		 width: 100%;"
+		>
+			{% block footer %}
+			<v-footer
+		height="auto"
+	
+    color="red accent-4"
+  >
+    <v-layout
+      justify-center
+      row
+      wrap
+    >
+			<v-btn
+			  color="white"
+        flat
+				round
+				href="{% url 'home' %}"
+      >
+        Home
+			</v-btn>
+			<v-btn
+			color="white"
+			flat
+			href="{% url 'ceo-message' %}"
+			round
+		>
+			Ceo Message
+		</v-btn>
+			<v-btn
+			href="{% url 'technical-team' %}"
+			color="white"
+			flat
+			round
+		>
+			Teams
+		</v-btn>
+	</v-btn>
+	<v-btn
+		href="{% url 'news' %}"
+		color="white"
+		flat
+		round
+	>
+		News
+	</v-btn>
+</v-btn>
+<v-btn
+	href="{% url 'fixtures' %}"
+	color="white"
+	flat
+	round
+	>
+	Fixtures & Results
+	</v-btn>
+</v-btn>
+<v-btn
+	href="{% url 'players-abroad' %}"
+	color="white"
+	flat
+	round
+	>
+	Players Abroad
+	</v-btn>
+	<v-btn
+		href="{% url 'gallery' %}"
+		color="white"
+		flat
+		round
+		>
+		Gallery
+		</v-btn>
+      <v-flex
+        color="red lighten-3"
+        py-3
+        text-xs-center
+        white--text
+        xs12
+      >
+        &copy;2018 — <strong>Code Alliance</strong>
+      </v-flex>
+    </v-layout>
+  </v-footer>
 	  	{% endblock footer %}
 	  </footer>
 	  </v-app>

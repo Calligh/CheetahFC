@@ -18,7 +18,7 @@
           <v-tabs-slider color="white"></v-tabs-slider>
       
           <v-tab href="#tab-1">
-            Photos
+            Wallpapers
             <v-icon>photo</v-icon>
           </v-tab>
       
@@ -50,15 +50,13 @@
             id="tab-2"
           >
             <v-card flat>
-              <v-card-text>jhjkhkjhjhkjh jgjghjghjg</v-card-text>
+              <gallery_grid :gallery="{{galleries}}"></gallery_grid>
             </v-card>
           </v-tab-item>
           <v-tab-item
             id="tab-3"
           >
-            <v-card flat>
-              <v-card-text>jhjkhkjhjhkjh</v-card-text>
-            </v-card>
+          <video_grid :videos="{{videos}}"></video_grid>
           </v-tab-item>
         </v-tabs>
 	    </v-flex>
@@ -83,6 +81,7 @@ var wallpaper_grid = {
                 <img
                   :src="picture.src"
                   alt="lorem"
+                  style="padding:5px;"
                   class="image"
                   height="100%"
                   width="100%"
@@ -91,10 +90,50 @@ var wallpaper_grid = {
             </v-layout>
   `
 }
+
+var gallery_grid = {
+  props: ['gallery'],
+  template: `
+          <v-layout row wrap>
+                <v-flex
+                v-for="(picture, index) in gallery"
+                :key="index"
+                xs3 md3
+              >
+                <img
+                  :src="picture.src"
+                  alt="lorem"
+                  class="image"
+                  style="padding:5px;"
+                  height="100%"
+                  width="100%"
+                >
+              </v-flex>
+            </v-layout>
+  `
+}
+
+var video_grid = {
+  props: ['videos'],
+  template: ` <v-layout row wrap>
+                <v-flex
+                v-for="(v, index) in videos"
+                :key="index"
+                xs3 md3
+              >
+              <iframe height="300"
+              style="padding:5px;"
+                      :src="v.src" frameborder="0" allowfullscreen>
+               </iframe>
+              </v-flex>
+            </v-layout>`
+}
 	new Vue({
 		el:"#app",
     components: {
-      'wallpaper_grid': wallpaper_grid
+      'wallpaper_grid': wallpaper_grid,
+      'gallery_grid': gallery_grid,
+      'video_grid': video_grid
     },
 		data:{
 		  text: 'jkljkjkjljk',

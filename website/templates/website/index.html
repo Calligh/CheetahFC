@@ -165,20 +165,11 @@
                     </v-card>
          	        </v-flex>
                    <v-flex xs12 sm12>
-                    <v-card tile>
+                    <v-card tile style="margin-bottom:105px;">
                        <img src="{% static 'images/cheetah/supporters.jpg' %}" alt="Cheetah Ads" :style="{ width: w + 'px', marginLeft: mgL + 'px'}">
                     </v-card>
                   </v-flex>
-         	        <v-flex xs12 sm12>
-         	        	<v-card tile>
-                        <v-card-media
-                          height="200px"
-                          src="{% static 'images/IMG-20180505-WA0049.jpg' %}"
-                        >
-
-                        </v-card-media>
-         	        	</v-card>
-         	        </v-flex>
+         	        
          	      </v-layout>
          	    </v-flex>
          	    <v-flex xs12 sm12 md8 lg8 xl8>
@@ -397,15 +388,14 @@
                   </v-flex>
                 </v-card>
               </v-flex>
+              <v-flex xs12 sm12>
+                  <img style="width: 100%" src="{% static 'images/IMG-20180505-WA0049.jpg' %}">
+                </v-flex>
          	  </v-layout>
          	</v-flex>
          </v-layout>
       </v-flex>
     </v-layout>
-    <v-footer color="red accent-3" class="pa-3">
-        <v-spacer></v-spacer>
-        <div style="color:white;">&copy; 2018 </div>
-      </v-footer>
   </v-container>
 
   <!-- Dialog full screen for the cheetah star reunion "View More" -->

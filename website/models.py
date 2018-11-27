@@ -4,9 +4,9 @@ from django.db import models
 
 # Create your models here.
 class PlayerSlider(models.Model):
-    image_name = models.CharField(max_length=30, default='')
+    image_name = models.TextField(default='')
     players_image = models.FileField(upload_to='uploads/')
-    caption = models.TextField(max_length=50, default='', blank=True)
+    caption = models.TextField(default='', blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     sliders = models.Manager()
@@ -14,9 +14,9 @@ class PlayerSlider(models.Model):
 
 class CheetahNew(models.Model):
     preview_image = models.FileField(upload_to='news/')
-    headlines = models.CharField(max_length=50, default='')
-    content = models.TextField(max_length=50000, default='')
-    published_by = models.CharField(max_length=150, default='', blank=True)
+    headlines = models.TextField(default='')
+    content = models.TextField( default='')
+    published_by = models.TextField(default='', blank=True)
     pub_date = models.DateField()
     created_at = models.DateTimeField(auto_now=True)
 
@@ -32,9 +32,9 @@ class NewsPosters(models.Model):
 
 # Player of the week database table
 class PlayerOfWeek(models.Model):
-    heading = models.CharField(max_length=30, default='', blank=True)
+    heading = models.TextField(default='', blank=True)
     player_pic = models.FileField(upload_to='player_of_week/')
-    short_description = models.CharField(max_length=100, default='', blank=True)
+    short_description = models.TextField(default='', blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
@@ -48,21 +48,21 @@ SET_SHOW_CHOICES = (
 class InfoBoard(models.Model):
     CH_ACTIVE = 'Active'
     CH_INACTIVE = 'Inactive'
-    teams = models.CharField(max_length=300, default='', blank=False, help_text="Team One VRS Team Two")
+    teams = models.TextField(default='', blank=False, help_text="Team One VRS Team Two")
     date = models.DateField(help_text="Date Of Match")
     time = models.TimeField(help_text="Time Of Match")
-    venue = models.CharField(max_length=150, default='', blank=False, help_text="Venue Of Match")
-    status = models.CharField(choices=SET_SHOW_CHOICES, max_length=8, default=CH_ACTIVE,
+    venue = models.TextField(default='', blank=False, help_text="Venue Of Match")
+    status = models.TextField(choices=SET_SHOW_CHOICES, max_length=8, default=CH_ACTIVE,
                               help_text="Show Or Hide Info Details")
-    score_board_team1 = models.CharField(max_length=2, default='', blank=True, help_text=" Team One Results Here ..")
-    score_board_team2 = models.CharField(max_length=2, default='', blank=True, help_text=" Team Two Results Here .. ")
+    score_board_team1 = models.TextField(max_length=2, default='', blank=True, help_text=" Team One Results Here ..")
+    score_board_team2 = models.TextField(max_length=2, default='', blank=True, help_text=" Team Two Results Here .. ")
     created_at = models.DateTimeField(auto_now_add=True)
 
     info_board = models.Manager()
 
 
 class ClothLining(models.Model):
-    cloth_name = models.CharField(max_length=30, default='', blank=True, help_text="Clothing Names (Optional)")
+    cloth_name = models.TextField( default='', blank=True, help_text="Clothing Names (Optional)")
     cloth_picture = models.FileField(upload_to='cloth_lining/')
     cloth_writeup = models.TextField(default='')
     pub_date = models.DateField()
@@ -71,44 +71,44 @@ class ClothLining(models.Model):
 
 class StarReunion(models.Model):
     picture = models.FileField(upload_to='reunion/')
-    caption = models.CharField(max_length=120, default='', blank=True, help_text="Star Reunion ..")
+    caption = models.TextField(default='', blank=True, help_text="Star Reunion ..")
     created_at = models.DateTimeField(auto_now=True)
 
 
 class Wallpaper(models.Model):
     wallpaper_image = models.FileField(upload_to='wallpapers/')
-    wallpaper_caption = models.CharField(max_length=120, default='', blank=True, help_text="Wallpapers Here")
+    wallpaper_caption = models.TextField( default='', blank=True, help_text="Wallpapers Here")
     created_at = models.DateTimeField(auto_now=True)
 
 
 class TalentBridgeAdvert(models.Model):
     ad_image = models.FileField(upload_to='talent_bridge/%Y/%m/%d/')
-    ad_caption = models.CharField(max_length=120, default='', blank=True, help_text="Advert Caption ..")
+    ad_caption = models.TextField(default='', blank=True, help_text="Advert Caption ..")
     created_at = models.DateTimeField(auto_now=True)
 
 
 class JerseyAdvert(models.Model):
     jersey_image = models.FileField(upload_to='jersey_advert/%Y/%m/%d/')
-    jersey_caption = models.CharField(max_length=120, default='', blank=True, help_text="Jersey Caption ..")
+    jersey_caption = models.TextField(default='', blank=True, help_text="Jersey Caption ..")
     created_at = models.DateTimeField(auto_now=True)
 
 
 class PictureOfWeek(models.Model):
-    heading = models.CharField(max_length=30, default='', blank=True)
+    heading = models.TextField(max_length=30, default='', blank=True)
     picture = models.FileField(upload_to='player_of_week/')
-    short_description = models.CharField(max_length=100, default='', blank=True)
+    short_description = models.TextField( default='', blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
 class Video(models.Model):
-    video = models.CharField(max_length=65535,default='', blank=True, help_text="Paste Youtube Link Here ..")
+    video = models.TextField(default='', blank=True, help_text="Paste Youtube Link Here ..")
     created_at = models.DateTimeField(auto_now=True)
 
 
 class SportsNew(models.Model):
     preview_image = models.FileField(upload_to='news/')
-    headlines = models.CharField(max_length=50, default='')
-    content = models.TextField(max_length=50000, default='')
+    headlines = models.TextField(default='')
+    content = models.TextField( default='')
     pub_date = models.DateField()
     created_at = models.DateTimeField(auto_now=True)
 
@@ -118,8 +118,8 @@ class SportsNew(models.Model):
 # Message from the CEO
 class CEOMessage(models.Model):
     ceo_image = models.FileField(upload_to='ceo_pics/', help_text="CEO's Message (Optional)", blank=True)
-    ceo_message_title = models.CharField(max_length=500, default='', help_text=" Enter Title Here", blank=True)
-    ceo_message = models.TextField(max_length=65535, default='', blank=True)
+    ceo_message_title = models.TextField(default='', help_text=" Enter Title Here", blank=True)
+    ceo_message = models.TextField( default='', blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     messages = models.Manager()
@@ -128,8 +128,8 @@ class CEOMessage(models.Model):
 # Technical team model
 class TechnicalTeam(models.Model):
     picture = models.FileField(upload_to='technical_team/%Y/%m')
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField( default='', help_text="Player Name Here ..")
+    profile = models.TextField(default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     # Custom model manager
@@ -139,8 +139,8 @@ class TechnicalTeam(models.Model):
 # First Team
 class FirstTeam(models.Model):
     picture = models.FileField(upload_to='first_team/%Y/%m')
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField( default='', help_text="Player Name Here ..")
+    profile = models.TextField(default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
     # Custom model manager
@@ -150,34 +150,34 @@ class FirstTeam(models.Model):
 # the Unders Here
 class U17(models.Model):
     picture = models.FileField(upload_to='under17/%Y/%m')
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField( default='', help_text="Player Name Here ..")
+    profile = models.TextField(default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
 class U15(models.Model):
     picture = models.FileField(upload_to='under15/%Y/%m')
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField(default='', help_text="Player Name Here ..")
+    profile = models.TextField( default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
 class U13(models.Model):
     picture = models.FileField(upload_to='under13/%Y/%m')
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField(default='', help_text="Player Name Here ..")
+    profile = models.TextField(default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
 class PlayersAbroad(models.Model):
     picture = models.FileField(upload_to="players_abroad/%Y/%m")
-    player_name = models.CharField(max_length=120, default='', help_text="Player Name Here ..")
-    profile = models.TextField(max_length=65535, default='', help_text="Some small write up here ..", blank=True)
+    player_name = models.TextField(default='', help_text="Player Name Here ..")
+    profile = models.TextField(default='', help_text="Some small write up here ..", blank=True)
     created_at = models.DateTimeField(auto_now=True)
 
 
 class Gallery(models.Model):
     image_url = models.FileField(upload_to="gallery/%Y/%m")
-    image_caption = models.TextField(max_length=120, default= '', help_text="Image Caption ..")
+    image_caption = models.TextField(default= '', help_text="Image Caption ..")
     created_at = models.DateTimeField(auto_now=True)
 

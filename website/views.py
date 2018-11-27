@@ -292,11 +292,12 @@ def gallery(request):
     for v in video:
         video_path = v.video
         video_obj = dict({ 'src': video_path })
-    if video_obj is not None:
-        video_data.append(video_obj)
-    else:
-        video_obj = "No Videos Available"
-        video_data.append(video_obj)
+
+        if  video_obj is not None:
+            video_data.append(video_obj)
+        else:
+            video_obj = "No Videos Available"
+            video_data.append(video_obj)
 
     context = {
         "wallpapers" : wallpaper_data,
